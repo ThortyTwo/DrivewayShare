@@ -1,0 +1,22 @@
+{
+  "name": "driveway-share",
+  "description": "A website to buy, sell, or rent privately owned parking spots, such as driveways.",
+  "main": "index.js",
+  "authors": [
+    "Kyle Kodani <poolioman@sbcglobal.net>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/ThortyTwo/DrivewayShare",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "^0.2.18",
+    "angular": "^1.5.0"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "driveway-share",
+  "version": "1.0.0",
+  "description": "A website to buy, sell, or rent privately owned parking spots, such as driveways.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThortyTwo/DrivewayShare.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThortyTwo/DrivewayShare/issues"
+  },
+  "homepage": "https://github.com/ThortyTwo/DrivewayShare#readme",
+  "dependencies": {
+    "bower": "^1.7.7",
+    "express": "^4.13.4"
+  }
+}
