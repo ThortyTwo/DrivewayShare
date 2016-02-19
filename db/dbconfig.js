@@ -37,6 +37,7 @@ db.knex.schema.hasTable("listings").then(function(exists) {
       listing.integer("user_id").unsigned().index().references("id").inTable("users");
       listing.string("street_address", 50);
       listing.string("city_name", 50);
+      listing.integer("price");
       listing.integer("start_time");
       listing.integer("end_time");
       listing.string("avail_days", 10);
