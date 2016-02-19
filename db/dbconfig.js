@@ -11,16 +11,16 @@ var knex = require("knex")({
   }
 });
 
-var Bookshelf = require("bookshelf")(knex);
-var db = Bookshelf;
+var bookshelf = require("bookshelf")(knex);
+var db = bookshelf;
 
-knex.schema.hasTable("users").then(function(exists) {
+db.knex.schema.hasTable("users").then(function(exists) {
   if (!exists) {
     knex.schema.createTable("users", function(user) {
       user.increments("id").primary();
       user.string("first_name", 30);
       user.string("last_name", 30);
-      user.string("e-mail", 50);
+      user.string("e-mail", 50).unique();
       user.string("username", 30).unique();
       user.string("password", 50);
       user.timestamps();
@@ -30,7 +30,7 @@ knex.schema.hasTable("users").then(function(exists) {
   }
 });
 
-knex.schema.hasTable("listings").then(function(exists) {
+db.knex.schema.hasTable("listings").then(function(exists) {
   if (!exists) {
     knex.schema.createTable("listings", function(listing) {
       listing.increments("id").primary();
@@ -39,7 +39,7 @@ knex.schema.hasTable("listings").then(function(exists) {
       listing.string("city_name", 50);
       listing.integer("start_time");
       listing.integer("end_time");
-      listing.string("avail_days", 30);
+      listing.string("avail_days", 10);
       listing.timestamps();
     }).then(function(table) {
       console.log('listings table created', table);
@@ -47,4 +47,4 @@ knex.schema.hasTable("listings").then(function(exists) {
   }
 });
 
-module.exports = Bookshelf;
+module.exports.bookshelf = bookshelf;
