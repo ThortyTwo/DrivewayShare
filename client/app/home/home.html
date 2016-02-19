@@ -1,35 +1,7 @@
-<div id="container">
-  <section id="main-search">
-    <form>
-      <input type="text">
-      <button>Search</button>
-    </form>
-  </section>
-  <main id="main-list">
-    <header class="list-header">
-      <h1>Listings</h1>
-      <h4>Address</h4>
-      <h4>Price</h4>
-      <h4>Availability</h4>
-    </header>
-    <!-- ng-repeat goes here -->
-    <ul class="list-table">
-    <!-- fake addresses for style testing -->
-      <li class="list-item">
-        <p>604 Arizona Ave. Santa Monica, CA</p>
-        <p>10</p>
-        <p>Yes</p>
-      </li>
-      <li class="list-item">
-        <p>225 S. Olive St. Los Angeles, CA</p>
-        <p>8</p>
-        <p>Yes</p>
-      </li>
-      <li class="list-item">
-        <p>123 1st Ave. Westwood, CA</p>
-        <p>8</p>
-        <p>No</p>
-      </li>
-    </ul>
-  </main>
-</div>
+<main id="home-container">
+  <form id="main-search">
+    <input type="text">
+    <button>Search</button>
+  </form>
+  <div ui-view></div>
+</main>

@@ -1,24 +1,81 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
 #nav-bar {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: black;
-    position: fixed;
-    top: 0;
-    width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .pages {
-    float: left;
+  float: left;
+  display: block;
+  color: #0091ea;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: helvetica;
 }
 
-.pages {
-    display: block;
-    color: #0091ea;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-family: helvetica;
+
+#main-search {
+  text-align: center;
+  line-height: 300px;
+  width: 100%;
+  background: #eee;
+  margin: 0 auto;
+}
+
+#main-search input{
+  width: 400px;
+  height: 25px;
+}
+
+#main-list {
+  width: 800px;
+  margin: 0 auto;
+}
+
+#main-list h1 {
+  text-align: center;
+}
+
+.list-headers, .list-item {
+  line-height: 32px;
+  border-bottom: 1px solid #888;
+}
+
+.list-headers h4 {
+  display: inline-block;
+}
+
+.list-table {
+  list-style-type: none;
+}
+
+.list-item:hover {
+  background-color: #f8f8f8;
+}
+
+.list-item p {
+  display: inline-block;
+}
+
+.list-address {
+  width: 575px;
+  padding-left: 15px;
+}
+
+.list-price, .list-availability {
+  width: 100px;
+  text-align: center
 }
 
