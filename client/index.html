@@ -1,1 +1,22 @@
 <!DOCTYPE html>
+<html ng-app="Driveway-Share">
+	<head>
+		<meta charset="utf-8"/>
+		<title>Driveway Share</title>
+		<link rel="stylesheet" type="text/css" href="styles/styles.css"/>
+	</head>
+	<body>
+		<ul id="nav-bar">
+		  <li class="pages" id="logo"><a><h1>Driveway Share</h1></a></li>
+		</ul>
+
+		<div ui-view></div>
+
+		<script src="lib/angular/angular.min.js"></script>
+		<script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+		<script src="app/home/home.js"></script>
+		<script src="app/services/services.js"></script>
+		<script src="app/app.js"></script>
+	</body>
+</html>
