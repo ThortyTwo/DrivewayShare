@@ -1,0 +1,24 @@
+#nav-bar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+.pages {
+    float: left;
+}
+
+.pages {
+    display: block;
+    color: #0091ea;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: helvetica;
+}
+
