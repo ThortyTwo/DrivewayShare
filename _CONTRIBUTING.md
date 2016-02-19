@@ -54,11 +54,11 @@ Steps that are repeated:
 
 Branch Names: please use **type/description** with camel-casing
 
-	> feature/logoutButton
+> feature/logoutButton
 
 Commit Messages: please use **[Type] Description** with first letter of type capitalized.  Description should have proper punctuation/capitalization and be in past tense.
 
-  > [Feature] Added button that allows user to logout
+> [Feature] Added button that allows user to logout
 
 Possible types include: setup, feature, refactor, bugfix
 
