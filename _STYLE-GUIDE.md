@@ -15,4 +15,4 @@ If you want the quote symbol in a string, then use single quotes:
 TODO: fill out other specifics
 
 
-#### Please check _CONTRIBUTING.md for a style guide on git related things.
+Please check _CONTRIBUTING.md for a style guide on git related things.
