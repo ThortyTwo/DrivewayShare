@@ -3,6 +3,6 @@ var Listing = require("../models/Listing.js");
 
 var Listings = new bookshelf.Collection();
 
-Listings.model: Listing;
+Listings.model = Listing;
 
 module.exports = Listings;

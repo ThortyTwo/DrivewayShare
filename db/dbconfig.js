@@ -20,7 +20,7 @@ db.knex.schema.hasTable("users").then(function(exists) {
       user.increments("id").primary();
       user.string("first_name", 30);
       user.string("last_name", 30);
-      user.string("e-mail", 50).unique();
+      user.string("email", 50).unique();
       user.string("username", 30).unique();
       user.string("password", 50);
       user.timestamps();
@@ -34,14 +34,17 @@ db.knex.schema.hasTable("listings").then(function(exists) {
   if (!exists) {
     knex.schema.createTable("listings", function(listing) {
       listing.increments("id").primary();
-      listing.integer("user_id").unsigned().index().references("id").inTable("users");
+      listing.integer("user_id").unsigned();
       listing.string("street_address", 50);
       listing.string("city_name", 50);
+      listing.string("state", 20);
+      listing.integer("zipcode");
       listing.integer("price");
       listing.integer("start_time");
       listing.integer("end_time");
       listing.string("avail_days", 10);
       listing.timestamps();
+      listing.foreign("user_id").references("id").inTable("users");
     }).then(function(table) {
       console.log('listings table created', table);
     });

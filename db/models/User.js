@@ -1,7 +1,7 @@
 var bookshelf = require("../dbconfig.js").bookshelf;
 
 var User = bookshelf.Model.extend({
-  tableName: "users"
+  tableName: "users",
   listings: function() {
     return this.hasMany(Listing);
   }
