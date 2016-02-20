@@ -1,7 +1,7 @@
 <div id="home-container">
-  <form id="main-search">
-    <input type="text">
-    <button>Search</button>
+  <form id="main-search" ng-submit="getSearch(search)">
+    <input id="main-search-input" type="text" ng-model="search">
+    <button type="submit">Search</button>
   </form>
   <div ui-view></div>
 </div>

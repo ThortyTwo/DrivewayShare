@@ -10,4 +10,8 @@ app.factory("Listings", function($http){
 			return resp.data;
 		});
 	};
+
+	return {
+		getListings : getListings
+	}
 })

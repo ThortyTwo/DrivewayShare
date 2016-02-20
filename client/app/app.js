@@ -10,7 +10,7 @@ var app = angular.module("Driveway-Share", [
 		.state("home", {
 			url: "/home",
 			templateUrl: "app/home/home.html",
-			controller: "home"
+			controller: "HomeController"
 		})
 		.state("home.list", {
 			url: "/list",
@@ -18,5 +18,3 @@ var app = angular.module("Driveway-Share", [
       controller: "ListingsController"
 		})
 });
-
-
