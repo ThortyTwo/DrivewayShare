@@ -1,0 +1,23 @@
+<div id="user-container">
+
+  <h1>Create Listing</h1>
+
+  <form name="createListingForm" ng-submit="createListing()">
+    <label>Street Address:<input type="text" ng-model="newListing.street_address"></label><br/>
+    <label>City:<input type="text" ng-model="newListing.city_name"></label><br/>
+    <label>Zip Code:<input type="number" ng-model="newListing.zip_code"></label><br/>
+    <label>Start Time:<input type="time" ng-model="newListing.start_time"></label><br/>
+    <label>End Time:<input type="time" ng-model="newListing.end_time"></label><br/>
+    <label>Availability:
+      <label>Monday<input type="checkbox" ng-model="newListing.avail_days[0]"></label>
+      <label>Tuesday<input type="checkbox" ng-model="newListing.avail_days[1]"></label>
+      <label>Wednesday<input type="checkbox" ng-model="newListing.avail_days[2]"></label>
+      <label>Thursday<input type="checkbox" ng-model="newListing.avail_days[3]"></label>
+      <label>Friday<input type="checkbox" ng-model="newListing.avail_days[4]"></label>
+      <label>Saturday<input type="checkbox" ng-model="newListing.avail_days[5]"></label>
+      <label>Sunday<input type="checkbox" ng-model="newListing.avail_days[6]"></label>
+    </label><br/>
+    <button>Create Listing</button>
+  </form>
+
+</div>
