@@ -11,10 +11,5 @@ var app = angular.module("Driveway-Share", [
 			url: "/home",
 			templateUrl: "app/home/home.html",
 			controller: "HomeController"
-		})
-		.state("home.list", {
-			url: "/list",
-			templateUrl: "app/home/list.html",
-      controller: "ListingsController"
-		})
+		});
 });

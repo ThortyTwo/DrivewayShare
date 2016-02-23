@@ -7,6 +7,7 @@ app.controller("HomeController", function($scope, Listings) {
 		.then(function (searchResult) {
 			// $location
 			$scope.data = searchResult;
+			console.log($scope.data)
 		});
 		$scope.search = "";
 	  	

@@ -3,5 +3,21 @@
     <input id="main-search-input" type="text" ng-model="search">
     <button type="submit">Search</button>
   </form>
-  <div ui-view></div>
+
+  <section id="main-list">
+    <h1>Listings</h1>
+    <header class="list-headers">
+      <h4 class="list-address">Address</h4>
+      <h4 class="list-price">Price</h4>
+      <h4 class="list-availability">Availability</h4>
+    </header>
+    <ul class="list-table">
+      <li class="list-item" ng-repeat="item in data">
+        <p class="list-address">{{ item.street_address }}</p>
+        <p class="list-price">{{ item.price }}</p>
+        <p class="list-availability">{{ item.avail_days }}</p>
+      </li>
+    </ul>
+  </section>
+
 </div>
