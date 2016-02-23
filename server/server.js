@@ -1,4 +1,5 @@
 var express = require("express");
+var bodyParser = require('body-parser');
 var db = require("../db/dbconfig.js");
 var Users = require("../db/collections/Users.js");
 var User = require("../db/models/User.js");
@@ -9,6 +10,7 @@ var _ = require("lodash");
 var app = express();
 
 app.use(express.static(__dirname + "/../client/"));
+app.use(bodyParser.json());
 
 // route for getting search results
 app.post("/api/search", function (req, res) {
@@ -21,6 +23,7 @@ app.post("/api/search", function (req, res) {
 		});
 		res.send(200, filtered);
 	}).catch(function (error) {
+		console.log(error)
 		res.send(400, error);
 	});
 });
