@@ -2,7 +2,7 @@ app.factory("Listings", function($http){
 
 	var getListings = function(searchInput) {
 		return $http({
-			method: "GET",
+			method: "POST",
 			url: "/api/search",
 			data: {search: searchInput}
 		})

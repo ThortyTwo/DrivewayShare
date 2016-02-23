@@ -11,7 +11,7 @@ var app = express();
 app.use(express.static(__dirname + "/../client/"));
 
 // route for getting search results
-app.get("/api/search", function (req, res) {
+app.post("/api/search", function (req, res) {
 	new Listing.Listing().fetchAll().then(function(listings) {
 		var city = req.body.search;
 		var filtered = _.filter(listings.models, function(listing) {
