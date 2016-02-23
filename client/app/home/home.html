@@ -14,7 +14,7 @@
     <ul class="list-table">
       <li class="list-item" ng-repeat="item in data">
         <p class="list-address">{{ item.street_address }}</p>
-        <p class="list-price">{{ item.price }}</p>
+        <p class="list-price">${{ item.price }}</p>
         <p class="list-availability">{{ item.avail_days }}</p>
       </li>
     </ul>
