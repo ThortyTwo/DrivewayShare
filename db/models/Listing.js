@@ -1,7 +1,9 @@
 var bookshelf = require("../dbconfig.js").bookshelf;
 
 var Listing = bookshelf.Model.extend({
-  tableName: "listings"
+
+  tableName: "listings",
+
   user: function() {
     return this.belongsTo(User);
   }

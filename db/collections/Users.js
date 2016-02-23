@@ -3,6 +3,6 @@ var User = require("../models/User.js");
 
 var Users = new bookshelf.Collection();
 
-Users.model: User;
+Users.model = User;
 
 module.exports = Users;
