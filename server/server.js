@@ -28,6 +28,18 @@ app.post("/api/search", function (req, res) {
 	});
 });
 
+// route for posting a listing
+app.post("/api/create", function (req, res) {
+	new Listing.Listing().fetchAll().then(function(listings) { // CHANGE THIS LINE
+		console.log("made it to server")
+		var data = req.body.listingInfo;
+		res.send(201, "successfully created");
+	}).catch(function (error) {
+		console.log(error)
+		res.send(400, error);
+	});
+});
+
 // route for everything else
 app.get("/*", function (req, res) {
   res.send("404 NOT FOUND");

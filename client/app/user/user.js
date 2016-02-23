@@ -1,4 +1,4 @@
-app.controller("UserController", function($scope){
+app.controller("UserController", function($scope, Listings){
 
   $scope.newListing = {
     street_address: "",
@@ -11,6 +11,11 @@ app.controller("UserController", function($scope){
   },
 
   $scope.createListing = function(){
+    console.log("click successful");
+    Listings.postListing({})
+    .then(function(data) {
+      console.log("made it back to controller", data);
+    });
   }
 
 });
