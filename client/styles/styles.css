@@ -13,6 +13,22 @@
   position: fixed;
   top: 0;
   width: 100%;
+  display: inline;
+  font-size: 20px;
+}
+
+#logo {
+  color: white;
+}
+
+#home {
+  color: white;
+  float: right;
+}
+
+#user {
+  color: white;
+  float: right;
 }
 
 .pages {
