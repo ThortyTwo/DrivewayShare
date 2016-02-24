@@ -15,6 +15,10 @@ app.controller("UserController", function($scope, Listings){
 
   resetNewListing();
 
+  $scope.autocomplete = new google.maps.places.Autocomplete(
+    (document.getElementById('post-address-input')),
+    {types: ['geocode']});
+
   $scope.createListing = function(){
 
     // parse through formatted_address or google place object

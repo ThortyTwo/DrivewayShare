@@ -196,3 +196,8 @@ header {
   color: white;
 }
 
+#post-address-input{
+  width: 400px;
+  height: 25px;
+}
+
