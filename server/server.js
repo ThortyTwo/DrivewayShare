@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 
 // route for getting search results
 app.post("/api/search", function (req, res) {
-	console.log(req.body);
+
 	new Listing.Listing().fetchAll().then(function(listings) {
 		var city = req.body.search;
 		var filtered = _.filter(listings.models, function(listing) {
