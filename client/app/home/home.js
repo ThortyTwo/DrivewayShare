@@ -2,6 +2,7 @@ app.controller("HomeController", function($scope, Listings) {
 	
 	$scope.data = {};
 	$scope.search = "";
+	$scope.expand = false;
 	
 	$scope.getSearch = function (searchInput) {
 		Listings.getListings(searchInput)
@@ -10,6 +11,10 @@ app.controller("HomeController", function($scope, Listings) {
 			console.log($scope.data)
 		});
 		$scope.search = "";
-	  	
-	}
+	};
+
+	$scope.toggleExpand = function() {
+		$scope.expand = !$scope.expand;
+	};
+
 });

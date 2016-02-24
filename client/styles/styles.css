@@ -86,12 +86,23 @@
 }
 
 .list-address {
-  width: 575px;
+  width: 50%;
   padding-left: 15px;
 }
 
-.list-price, .list-availability {
-  width: 100px;
-  text-align: center
+.list-price {
+  width: 22%;
+  text-align: center;
 }
+
+.list-availability {
+  width: 22%;
+  text-align: center;
+}
+
+.list-contact {
+  padding-left: 15px;
+}
+
+
 

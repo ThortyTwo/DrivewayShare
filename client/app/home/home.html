@@ -12,10 +12,18 @@
       <h4 class="list-availability">Availability</h4>
     </header>
     <ul class="list-table">
-      <li class="list-item" ng-repeat="item in data">
-        <p class="list-address">{{ item.street_address }}</p>
-        <p class="list-price">${{ item.price }}</p>
-        <p class="list-availability">{{ item.avail_days }}</p>
+      <li class="list-item" ng-repeat="item in data" ng-click="toggleExpand()">
+        <div>
+          <p class="list-address">
+            {{ item.street_address }}, {{ item.city_name }},
+            {{ item.state }} {{ item.zipcode }}
+          </p>
+          <p class="list-price">${{ item.price }}</p>
+          <p class="list-availability">{{ item.avail_days }}YES</p>
+        </div>
+        <div ng-show="expand">
+          <p class="list-contact">Contact NAME at EMAIL@EMAIL.EMAIL</p>
+        </div>
       </li>
     </ul>
   </section>
