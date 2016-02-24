@@ -23,7 +23,6 @@ var app = angular.module("Driveway-Share", [
 	    controller: "UserController",
 			authenticate: false
     });
-});
 
 	$urlRouterProvider.otherwise("/home");
 

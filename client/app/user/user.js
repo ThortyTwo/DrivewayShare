@@ -25,12 +25,15 @@ app.controller("UserController", function($scope, Listings){
     // to fill in individual fields in $scope.newListing
 
     // send object to be posted
-    Listings.postListing($scope.newListing)
-    .then(function(data) {
-      console.log("New listing created (but not actually)")
-    });
-
-    resetNewListing();
+    $scope.getSearch = function () {
+      Listings.sendAddress(function(results) {
+        console.log("in callback, result is", results)
+        Listings.postListing(results).then(function(searchResult) {
+          $scope.data = searchResult;
+          resetNewListing();
+        });
+      });
+    };
   };
 
 
