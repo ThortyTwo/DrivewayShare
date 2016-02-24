@@ -29,7 +29,7 @@
             {{ item.listing.zipcode }}
           </p>
           <p class="list-price">${{ item.listing.price }}</p>
-          <p class="list-availability">{{ item.listing.latitude }} {{ item.listing.longitude }} miles</p>
+          <p class="list-availability">{{ item.dist }} miles</p>
         </div>
         <div ng-show="item.expand">
           <p class="list-contact">Contact {{ item.username }} at {{item.email}}</p>

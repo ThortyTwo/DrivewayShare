@@ -16,7 +16,9 @@ app.use(bodyParser.json());
 // route for getting search results
 app.post("/api/search", function (req, res) {
 
-	var city = req.body.city;
+	var targetLat = req.body.lat;
+	var targetLng = req.body.lng;
+	console.log("target", targetLat, targetLng)
 	
 	new User.User().fetchAll({withRelated: ['listings']}).then(function(users) {
 
@@ -26,12 +28,23 @@ app.post("/api/search", function (req, res) {
 			var user = users.models[i];
 			var userListings = user.relations.listings.models;
 			for(var j=0; j<userListings.length; j++) {
-				if(userListings[j].get("city_name") === city) {
+				var currentListing = userListings[j];
+				var lat = currentListing.get("latitude");
+				var lng = currentListing.get("longitude");
+				var latDiff = Math.abs(lat - targetLat);
+				var lngDiff = Math.abs(lng - targetLng);
+				var latkm = latDiff * 110.574;
+				var lngkm = lngDiff * 111.320 * Math.cos(latDiff);
+				var distkm = Math.sqrt(Math.pow(latkm,2)+Math.pow(lngkm,2));
+				var distmi = distkm * .621371;
+
+				if(distmi < 2) {
 					retVal.push({
-						listing: userListings[j],
+						listing: currentListing,
 						username: user.get("username"),
 						email: user.get("email"),
-						expand: false
+						expand: false,
+						dist: distmi.toFixed(2)
 					});
 				}
 			}
@@ -39,7 +52,7 @@ app.post("/api/search", function (req, res) {
 
 		res.status(200);
 		res.send(retVal);
-		
+
 	}).catch(function (error) {
 		console.log(error);
 		res.status(400);
