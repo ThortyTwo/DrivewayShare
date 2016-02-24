@@ -14,9 +14,9 @@ app.controller("HomeController", function($scope, Listings, Auth, $location, $wi
       console.log("in callback, result is", results)
       Listings.getListings(results).then(function(searchResult) {
         $scope.data = searchResult;
+        $scope.search = "";
       });
     });
-    $scope.search = "";
   };
 
   $scope.toggleExpand = function() {
