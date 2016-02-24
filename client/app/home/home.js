@@ -1,9 +1,8 @@
-app.controller("HomeController", function($scope, Listings, Auth, $location, $window) {
+app.controller("HomeController", function($scope, Listings) {
 
-	$scope.user = {};
-	$scope.data = {};
-	$scope.search = "";
-	$scope.expand = false;
+  $scope.data = {};
+  $scope.search = "";
+  $scope.expand = false;
 
   $scope.autocomplete = new google.maps.places.Autocomplete(
     (document.getElementById('main-search-input')),
@@ -23,14 +22,4 @@ app.controller("HomeController", function($scope, Listings, Auth, $location, $wi
     $scope.expand = !$scope.expand;
   };
 
-  $scope.signin = function () {
-    Auth.signin($scope.user)
-    .then(function (token) {
-      $window.localStorage.setItem("authentication", token);
-      $location.path("/user");
-    })
-    .catch(function (error) {
-      console.error(error);
-    });
-  };
 });
