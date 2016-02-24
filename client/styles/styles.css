@@ -31,6 +31,22 @@
   float: right;
 }
 
+#signin-form {
+  float: right;
+}
+
+#signup-container {
+  display: block;
+  text-align: center;
+}
+
+#signup-form {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
 .pages {
   float: left;
   display: block;

@@ -1,4 +1,12 @@
 <div id="home-container">
+  <nav id="nav-bar">
+    <a href=#><h1>Driveway Share</h1></a>
+    <form id="signin-form" name="signinForm" ng-submit='signin()'>
+    <input type='text'ng-model='user.username'>
+    <input type="password" ng-model='user.password'>
+    <button>Sign in</button> <a href="#/signup"><button>Sign up</button></a>
+  </form>
+  </nav>
   <form id="main-search" ng-submit="getSearch(search)">
     <input id="main-search-input" type="text" ng-model="search">
     <button type="submit">Search</button>
@@ -27,5 +35,4 @@
       </li>
     </ul>
   </section>
-
 </div>
