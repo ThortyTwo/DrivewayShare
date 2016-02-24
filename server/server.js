@@ -35,7 +35,7 @@ app.post("/api/search", function (req, res) {
 
 // route for posting a listing
 app.post("/api/create", function (req, res) {
-	
+
 	var data = req.body.listingInfo;
 
 

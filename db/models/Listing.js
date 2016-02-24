@@ -6,6 +6,10 @@ var Listing = bookshelf.Model.extend({
 
   user: function() {
     return this.belongsTo(User);
+  },
+
+  days: function() {
+    return this.hasMany(Day);
   }
 });
 

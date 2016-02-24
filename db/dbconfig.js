@@ -21,6 +21,7 @@ db.knex.schema.hasTable("users").then(function(exists) {
       user.string("first_name", 30);
       user.string("last_name", 30);
       user.string("email", 50).unique();
+      user.string("phone_number", 15);
       user.string("username", 30).unique();
       user.string("password", 50);
       user.timestamps();
@@ -39,12 +40,26 @@ db.knex.schema.hasTable("listings").then(function(exists) {
       listing.string("city_name", 50);
       listing.string("state", 20);
       listing.integer("zipcode");
+      listing.float("latitude", 10, 6);
+      listing.float("longitude", 10, 6);
       listing.integer("price");
-      listing.integer("start_time");
-      listing.integer("end_time");
-      listing.string("avail_days", 10);
       listing.timestamps();
       listing.foreign("user_id").references("id").inTable("users");
+    }).then(function(table) {
+      console.log('listings table created', table);
+    });
+  }
+});
+
+db.knex.schema.hasTable("listing_days").then(function(exists) {
+  if (!exists) {
+    knex.schema.createTable("listing_days", function(listing_day) {
+      listing_day.increments("id").primary();
+      listing_day.integer("listing_id").unsigned();
+      listing_day.string("day", 10);
+      listing_day.integer("start_time");
+      listing_day.integer("end_time");
+      listing_day.foreign("listing_id").references("id").inTable("listings");
     }).then(function(table) {
       console.log('listings table created', table);
     });
