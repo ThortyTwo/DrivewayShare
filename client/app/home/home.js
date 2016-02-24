@@ -11,7 +11,7 @@ app.controller("HomeController", function($scope, Listings, Auth, $location, $wi
 
   $scope.getSearch = function () {
     Listings.sendAddress(function(results) {
-      console.log("in callback, resutl is", results)
+      console.log("in callback, result is", results)
       Listings.getListings(results).then(function(searchResult) {
         $scope.data = searchResult;
       });
