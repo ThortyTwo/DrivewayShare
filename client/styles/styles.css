@@ -201,6 +201,11 @@ header {
   height: 25px;
 }
 
+#post-address-input{
+  width: 400px;
+  height: 25px;
+}
+
 #about {
   padding: 20px;
 }
