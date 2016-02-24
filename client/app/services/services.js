@@ -24,12 +24,21 @@ app.factory("Listings", function($http){
   };
 
   var getListings = function(searchInput) {
-    var add = addressParser(searchInput.formatted_address);
-    var city = add[1];
+
+    var address = addressParser(searchInput.formatted_address);
+    var lat = searchInput.geometry.location.lat();
+    var lng = searchInput.geometry.location.lng();
+
     return $http({
       method: "POST",
       url: "/api/search",
-      data: {search: city}
+      data: { street: address[0],
+              city: address[1],
+              state: address[2],
+              zip: address[3],
+              lat: lat,
+              lng: lng
+            }
     })
     .then(function(resp) {
       return resp.data;

@@ -16,15 +16,30 @@ app.use(bodyParser.json());
 // route for getting search results
 app.post("/api/search", function (req, res) {
 
-	new Listing.Listing().fetchAll().then(function(listings) {
-		var city = req.body.search;
-		var filtered = _.filter(listings.models, function(listing) {
-			if(listing.get("city_name") === city) {
-				return listing;
+	var city = req.body.city;
+	
+	new User.User().fetchAll({withRelated: ['listings']}).then(function(users) {
+
+		var retVal = [];
+
+		for(var i=0; i<users.models.length; i++) {
+			var user = users.models[i];
+			var userListings = user.relations.listings.models;
+			for(var j=0; j<userListings.length; j++) {
+				if(userListings[j].get("city_name") === city) {
+					retVal.push({
+						listing: userListings[j],
+						username: user.get("username"),
+						email: user.get("email"),
+						expand: false
+					});
+				}
 			}
-		});
+		}
+
 		res.status(200);
-		res.send(filtered);
+		res.send(retVal);
+		
 	}).catch(function (error) {
 		console.log(error);
 		res.status(400);

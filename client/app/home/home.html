@@ -17,20 +17,22 @@
     <header class="list-headers">
       <h4 class="list-address">Address</h4>
       <h4 class="list-price">Price</h4>
-      <h4 class="list-availability">Availability</h4>
+      <h4 class="list-availability">Distance</h4>
     </header>
     <ul class="list-table">
-      <li class="list-item" ng-repeat="item in data" ng-click="toggleExpand()">
+      <li class="list-item" ng-repeat="item in data" ng-click="toggleExpand(item)">
         <div>
           <p class="list-address">
-            {{ item.street_address }}, {{ item.city_name }},
-            {{ item.state }} {{ item.zipcode }}
+            {{ item.listing.street_address }} 
+            {{ item.listing.city_name }}, 
+            {{ item.listing.state }} 
+            {{ item.listing.zipcode }}
           </p>
-          <p class="list-price">${{ item.price }}</p>
-          <p class="list-availability">{{ item.avail_days }}YES</p>
+          <p class="list-price">${{ item.listing.price }}</p>
+          <p class="list-availability">{{ item.listing.latitude }} {{ item.listing.longitude }} miles</p>
         </div>
-        <div ng-show="expand">
-          <p class="list-contact">Contact NAME at EMAIL@EMAIL.EMAIL</p>
+        <div ng-show="item.expand">
+          <p class="list-contact">Contact {{ item.username }} at {{item.email}}</p>
         </div>
       </li>
     </ul>
