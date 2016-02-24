@@ -31,6 +31,8 @@ app.post("/api/search", function (req, res) {
 				var currentListing = userListings[j];
 				var lat = currentListing.get("latitude");
 				var lng = currentListing.get("longitude");
+
+				// convert lat/lng to km, then to distance in miles
 				var latDiff = Math.abs(lat - targetLat);
 				var lngDiff = Math.abs(lng - targetLng);
 				var latkm = latDiff * 110.574;
