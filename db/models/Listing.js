@@ -14,6 +14,4 @@ var Listing = bookshelf.Model.extend({
   }
 });
 
-module.exports = {
-  Listing: Listing
-};
+module.exports = Listing;

@@ -17,10 +17,14 @@
   },
   "homepage": "https://github.com/ThortyTwo/DrivewayShare#readme",
   "dependencies": {
+    "bcrypt": "^0.8.5",
+    "bcrypt-nodejs": "0.0.3",
+    "bluebird": "^3.3.1",
     "body-parser": "^1.15.0",
     "bookshelf": "^0.9.2",
     "bower": "^1.7.7",
     "express": "^4.13.4",
+    "jwt-simple": "^0.4.1",
     "knex": "^0.10.0",
     "mysql": "^2.10.2"
   }
