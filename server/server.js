@@ -24,7 +24,7 @@ app.post("/api/search", function (req, res) {
 	var targetLng = req.body.lng;
 
 	new User().fetchAll({withRelated: ['listings']}).then(function(users) {
-
+	
 		var retVal = [];
 
 		for(var i=0; i<users.models.length; i++) {
