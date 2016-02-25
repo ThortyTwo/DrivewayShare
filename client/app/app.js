@@ -19,10 +19,15 @@ var app = angular.module("Driveway-Share", [
 		})
 		.state("user", {
 			url: "/user",
-	      	templateUrl: "app/user/user.html",
-	      	controller: "UserController",
-			authenticate: true
-		})
+	    templateUrl: "app/user/user.html",
+	    controller: "UserController",
+			authenticate: false
+    })
+    .state("about", {
+    	url: "/about",
+    	templateUrl: "app/home/about.html",
+    	authenticate: false
+    });
 
 	$urlRouterProvider.otherwise("/home");
 

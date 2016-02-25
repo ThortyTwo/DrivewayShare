@@ -9,11 +9,15 @@ app.controller("UserController", function($scope, Listings){
       start_time: "",
       end_time: "",
       avail_days: [],
-      price: ""
+      price: 0
     }
   };
 
   resetNewListing();
+
+  $scope.autocomplete = new google.maps.places.Autocomplete(
+    (document.getElementById("post-address-input")),
+    {types: ["geocode"]});
 
   $scope.createListing = function(){
 
@@ -21,12 +25,13 @@ app.controller("UserController", function($scope, Listings){
     // to fill in individual fields in $scope.newListing
 
     // send object to be posted
-    Listings.postListing($scope.newListing)
-    .then(function(data) {
-      console.log("New listing created (but not actually)")
+    Listings.sendAddress("post-address-input", function(results) {
+      results.price = $scope.newListing.price;
+      results.current_username = 1; //CHANGE LATER
+      Listings.postListing(results).then(function(respdata) {
+        resetNewListing();
+      });
     });
-
-    resetNewListing();
   };
 
 

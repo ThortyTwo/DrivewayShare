@@ -1,11 +1,15 @@
 app.factory("Listings", function($http){
 
-  var sendAddress = function(cb){
-    var address = document.getElementById('main-search-input').value;
+  var sendAddress = function(element_id, cb){
+    var address = document.getElementById(element_id).value;
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({address: address}, function(results, status) {
       if(status === google.maps.GeocoderStatus.OK) {
-        cb(results[0]);
+        var retVal = {};
+        retVal.address = addressParser(results[0].formatted_address);
+        retVal.lat = results[0].geometry.location.lat();
+        retVal.lng = results[0].geometry.location.lng();
+        cb(retVal);
       } else {
         alert("please enter valid address yo");
       }
@@ -13,10 +17,19 @@ app.factory("Listings", function($http){
   };
 
   var postListing = function(listingInfo) {
+
     return $http({
       method: "POST",
       url: "/api/create",
-      data: {listingInfo: listingInfo}
+      data: { street: listingInfo.address[0],
+              city: listingInfo.address[1],
+              state: listingInfo.address[2],
+              zip: listingInfo.address[3],
+              lat: listingInfo.lat,
+              lng: listingInfo.lng,
+              price: listingInfo.price,
+              current_username: listingInfo.current_username
+            }
     })
     .then(function(resp) {
       return resp.data;
@@ -25,19 +38,15 @@ app.factory("Listings", function($http){
 
   var getListings = function(searchInput) {
 
-    var address = addressParser(searchInput.formatted_address);
-    var lat = searchInput.geometry.location.lat();
-    var lng = searchInput.geometry.location.lng();
-
     return $http({
       method: "POST",
       url: "/api/search",
-      data: { street: address[0],
-              city: address[1],
-              state: address[2],
-              zip: address[3],
-              lat: lat,
-              lng: lng
+      data: { street: searchInput.address[0],
+              city: searchInput.address[1],
+              state: searchInput.address[2],
+              zip: searchInput.address[3],
+              lat: searchInput.lat,
+              lng: searchInput.lng
             }
     })
     .then(function(resp) {

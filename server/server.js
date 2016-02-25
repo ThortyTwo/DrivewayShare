@@ -18,7 +18,6 @@ app.post("/api/search", function (req, res) {
 
 	var targetLat = req.body.lat;
 	var targetLng = req.body.lng;
-	console.log("target", targetLat, targetLng)
 	
 	new User.User().fetchAll({withRelated: ['listings']}).then(function(users) {
 
@@ -66,12 +65,27 @@ app.post("/api/search", function (req, res) {
 // route for posting a listing
 app.post("/api/create", function (req, res) {
 
-	var data = req.body.listingInfo;
+	var data = req.body;
+
+	var newListing = new Listing.Listing({
+		user_id: data.current_username,
+		street_address: data.street,
+		city_name: data.city,
+		state: data.state,
+		zipcode: data.zip,
+		latitude: data.lat,
+		longitude: data.lng,
+		price: data.price
+	});
+
+	console.log("create", newListing);
 
 
-	new Listing.Listing().fetchAll().then(function(listings) { // CHANGE THIS LINE
+
+
+	newListing.save().then(function(listing) {
 		res.status(201);
-		res.send("successfully created (but not actually)");
+		res.send("successfully created");
 	}).catch(function (error) {
 		console.log(error);
 		res.status(400);
