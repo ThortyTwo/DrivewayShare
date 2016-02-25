@@ -7,22 +7,20 @@
   </head>
   <body>
 
-    <div ng-controller="NavController">
-      <nav id="nav-bar">
-        <a href=#><h1>Driveway Share</h1></a>
-        <form id="signin-form" name="signinForm" ng-submit='signin()'>
-          <input type='text'ng-model='user.username'>
-          <input type="password" ng-model='user.password'>
-          <button>Sign in</button> <a href="#/signup"><button>Sign up</button></a>
-        </form>
-      </nav>
+    <div id="nav-bar" ng-controller="NavController">
+      <header>
+        <a id="logo" href=#><span>Driveway Share</span></a>
+        <nav id="nav-links">
+          <a class="nav-item" href=#>About</a>
+          <a class="nav-item" href="#/signup">Sign In</a>
+        </nav>
+      </header>
     </div>
 
-    <div ui-view></div>
+    <div id="main" ui-view></div>
 
     <script src="lib/angular/angular.min.js"></script>
     <script src="lib/angular-ui-router/release/angular-ui-router.min.js"></script>
-
     <script src="app/app.js"></script>
     <script src="app/home/home.js"></script>
     <script src="app/home/nav.js"></script>

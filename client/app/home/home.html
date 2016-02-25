@@ -1,6 +1,7 @@
 <div id="home-container">
-  <form id="main-search" ng-submit="getSearch()">
-    <input id="main-search-input" type="text" ng-model="search">
+
+  <form id="main-search" ng-submit="getSearch()" ng-class="listPopulated ? 'smallSearch' : 'largeSearch'">
+    <input id="main-search-input" type="text" ng-model="search" required="">
     <button type="submit">Search</button>
   </form>
 
@@ -9,19 +10,19 @@
     <header class="list-headers">
       <h4 class="list-address">Address</h4>
       <h4 class="list-price">Price</h4>
-      <h4 class="list-availability">Distance</h4>
+      <h4 class="list-distance">Distance</h4>
     </header>
     <ul class="list-table">
       <li class="list-item" ng-repeat="item in data" ng-click="toggleExpand(item)">
         <div>
           <p class="list-address">
-            {{ item.listing.street_address }} 
-            {{ item.listing.city_name }}, 
-            {{ item.listing.state }} 
+            {{ item.listing.street_address }}
+            {{ item.listing.city_name }},
+            {{ item.listing.state }}
             {{ item.listing.zipcode }}
           </p>
           <p class="list-price">${{ item.listing.price }}</p>
-          <p class="list-availability">{{ item.dist }} miles</p>
+          <p class="list-distance">{{ item.dist }} miles</p>
         </div>
         <div ng-show="item.expand">
           <p class="list-contact">Contact {{ item.username }} at {{item.email}}</p>
@@ -29,4 +30,5 @@
       </li>
     </ul>
   </section>
+
 </div>

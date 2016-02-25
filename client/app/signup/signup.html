@@ -1,13 +1,21 @@
-<div id='signup'>
-  <h1>Sign up</h1>
-  <div id="signup-container">
-	  <form id="signup-form" name="signupForm" ng-submit="signup()">
-	  	First name: <input type="text" ng-model="user.first_name"><br>
-	  	Last name: <input type="text" ng-model="user.last_name"><br>
-	  	Email: <input type="text" ng-model="user.email"><br>
-	    Username: <input type="text" ng-model="user.username"><br>
-	    Password: <input type="password" ng-model="user.password"><br>
-	    <button>Sign up</button>
-	  </form>
+<div id="signup-container">
+  <div id="signin">
+    <form class="md-form" name="signinForm" ng-submit="signin()">
+      <h4 class="md-title">Sign In</h4>
+      <input class="md-input" placeholder="Username" type="text" required>
+      <input class="md-input" placeholder="Password" type="password" required>
+      <button class="md-button">Submit</button>
+    </form>
+  </div>
+  <div id="signup">
+    <form class="md-form" name="signupForm" ng-submit="signup()">
+      <h4 class="md-title">Create Account</h4>
+      <input class="md-input" placeholder="First Name" type="text" ng-model="user.first_name" required>
+      <input class="md-input" placeholder="Last Name" type="text" ng-model="user.last_name" required>
+      <input class="md-input" placeholder="Email" type="text" ng-model="user.email" required>
+      <input class="md-input" placeholder="Username" type="text" ng-model="user.username" required>
+      <input class="md-input" placeholder="Password" type="password" ng-model="user.password" required>
+      <button class="md-button">Submit</button>
+    </form>
   </div>
 </div>
