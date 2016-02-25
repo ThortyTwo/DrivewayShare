@@ -62,39 +62,39 @@ app.factory("Listings", function($http){
     sendAddress: sendAddress
   };
 })
-.factory("Auth", function ($http, $location, $window) {
+.factory("Auth", function($http, $location, $window) {
 
-  var signin = function (user) {
+  var signin = function(user) {
     return $http ({
       method: "POST",
       url: "api/users/signin",
       data: user
     })
-    .then(function (resp) {
+    .then(function(resp) {
       return resp.data.token;
     });
   };
 
-  var signup = function (user) {
+  var signup = function(user) {
     return $http ({
       method: "POST",
       url: "api/users/signup",
       data: user
     })
-    .then(function (resp) {
+    .then(function(resp) {
       return resp.data.token;
     });
   };
 
-  var isAuth = function () {
+  var isAuth = function() {
     return !!$window.localStorage.getItem("authentication");
   }
 
-  var isSigendIn = function () {
+  var isSignedIn = function() {
     return isAuth();
   }
 
-  var signout = function () {
+  var signout = function() {
     $window.localStorage.removeItem("authentication");
     $location.path("/home");
   }
@@ -103,7 +103,7 @@ app.factory("Listings", function($http){
     signin: signin,
     signup: signup,
     isAuth: isAuth,
-    isSigendIn: isSigendIn,
+    isSignedIn: isSignedIn,
     signout: signout
   };
 });

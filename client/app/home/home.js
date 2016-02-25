@@ -5,10 +5,10 @@ app.controller("HomeController", function($scope, Listings, Auth, $location, $wi
 	$scope.search = "";
 
   $scope.autocomplete = new google.maps.places.Autocomplete(
-    (document.getElementById('main-search-input')),
-    {types: ['geocode']});
+    (document.getElementById("main-search-input")),
+    {types: ["geocode"]});
 
-  $scope.getSearch = function () {
+  $scope.getSearch = function() {
     Listings.sendAddress(function(results) {
       Listings.getListings(results).then(function(searchResult) {
         $scope.data = searchResult;
@@ -22,13 +22,13 @@ app.controller("HomeController", function($scope, Listings, Auth, $location, $wi
     item.expand = !item.expand;
   };
 
-  $scope.signin = function () {
+  $scope.signin = function() {
     Auth.signin($scope.user)
     .then(function (token) {
       $window.localStorage.setItem("authentication", token);
       $location.path("/user");
     })
-    .catch(function (error) {
+    .catch(function(error) {
       console.error(error);
     });
   };
