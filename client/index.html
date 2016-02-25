@@ -7,6 +7,17 @@
   </head>
   <body>
 
+    <div ng-controller="NavController">
+      <nav id="nav-bar">
+        <a href=#><h1>Driveway Share</h1></a>
+        <form id="signin-form" name="signinForm" ng-submit='signin()'>
+          <input type='text'ng-model='user.username'>
+          <input type="password" ng-model='user.password'>
+          <button>Sign in</button> <a href="#/signup"><button>Sign up</button></a>
+        </form>
+      </nav>
+    </div>
+
     <div ui-view></div>
 
     <script src="lib/angular/angular.min.js"></script>
@@ -14,6 +25,7 @@
 
     <script src="app/app.js"></script>
     <script src="app/home/home.js"></script>
+    <script src="app/home/nav.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js?libraries=places"></script>
     <script src="app/user/user.js"></script>
     <script src="app/signup/signup.js"></script>
