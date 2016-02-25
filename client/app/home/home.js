@@ -3,7 +3,6 @@ app.controller("HomeController", function($scope, Listings, Auth, $location, $wi
 	$scope.user = {};
 	$scope.data = {};
 	$scope.search = "";
-	$scope.expand = false;
 
   $scope.autocomplete = new google.maps.places.Autocomplete(
     (document.getElementById('main-search-input')),
@@ -11,16 +10,16 @@ app.controller("HomeController", function($scope, Listings, Auth, $location, $wi
 
   $scope.getSearch = function () {
     Listings.sendAddress(function(results) {
-      console.log("in callback, result is", results)
       Listings.getListings(results).then(function(searchResult) {
         $scope.data = searchResult;
+        console.log(searchResult)
+        $scope.search = "";
       });
     });
-    $scope.search = "";
   };
 
-  $scope.toggleExpand = function() {
-    $scope.expand = !$scope.expand;
+  $scope.toggleExpand = function(item) {
+    item.expand = !item.expand;
   };
 
   $scope.signin = function () {

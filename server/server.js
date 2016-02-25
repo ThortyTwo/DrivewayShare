@@ -16,15 +16,45 @@ app.use(bodyParser.json());
 // route for getting search results
 app.post("/api/search", function (req, res) {
 
-	new Listing.Listing().fetchAll().then(function(listings) {
-		var city = req.body.search;
-		var filtered = _.filter(listings.models, function(listing) {
-			if(listing.get("city_name") === city) {
-				return listing;
+	var targetLat = req.body.lat;
+	var targetLng = req.body.lng;
+	console.log("target", targetLat, targetLng)
+	
+	new User.User().fetchAll({withRelated: ['listings']}).then(function(users) {
+
+		var retVal = [];
+
+		for(var i=0; i<users.models.length; i++) {
+			var user = users.models[i];
+			var userListings = user.relations.listings.models;
+			for(var j=0; j<userListings.length; j++) {
+				var currentListing = userListings[j];
+				var lat = currentListing.get("latitude");
+				var lng = currentListing.get("longitude");
+
+				// convert lat/lng to km, then to distance in miles
+				var latDiff = Math.abs(lat - targetLat);
+				var lngDiff = Math.abs(lng - targetLng);
+				var latkm = latDiff * 110.574;
+				var lngkm = lngDiff * 111.320 * Math.cos(latDiff);
+				var distkm = Math.sqrt(Math.pow(latkm,2)+Math.pow(lngkm,2));
+				var distmi = distkm * .621371;
+
+				if(distmi < 2) {
+					retVal.push({
+						listing: currentListing,
+						username: user.get("username"),
+						email: user.get("email"),
+						expand: false,
+						dist: distmi.toFixed(2)
+					});
+				}
 			}
-		});
+		}
+
 		res.status(200);
-		res.send(filtered);
+		res.send(retVal);
+
 	}).catch(function (error) {
 		console.log(error);
 		res.status(400);
