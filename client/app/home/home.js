@@ -9,7 +9,7 @@ app.controller("HomeController", function($scope, Listings) {
     {types: ["geocode"]});
 
   $scope.getSearch = function() {
-    Listings.sendAddress(function(results) {
+    Listings.sendAddress("main-search-input", function(results) {
       Listings.getListings(results).then(function(searchResult) {
         $scope.data = searchResult;
         $scope.listPopulated = true;

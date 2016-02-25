@@ -18,7 +18,6 @@ app.post("/api/search", function (req, res) {
 
 	var targetLat = req.body.lat;
 	var targetLng = req.body.lng;
-	console.log("target", targetLat, targetLng)
 	
 	new User.User().fetchAll({withRelated: ['listings']}).then(function(users) {
 
@@ -66,7 +65,9 @@ app.post("/api/search", function (req, res) {
 // route for posting a listing
 app.post("/api/create", function (req, res) {
 
-	var data = req.body.listingInfo;
+	var data = req.body;
+
+	console.log("create", data)
 
 
 	new Listing.Listing().fetchAll().then(function(listings) { // CHANGE THIS LINE
