@@ -48,6 +48,7 @@ app.post("/api/search", function (req, res) {
 						listing: currentListing,
 						username: user.get("username"),
 						email: user.get("email"),
+						phone: user.get("phone_number"),
 						expand: false,
 						dist: distmi.toFixed(2)
 					});

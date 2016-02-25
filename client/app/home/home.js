@@ -1,6 +1,6 @@
 app.controller("HomeController", function($scope, Listings) {
 
-	$scope.data = {};
+	$scope.data = [];
 	$scope.search = "";
   $scope.listPopulated = false;
 
@@ -12,6 +12,9 @@ app.controller("HomeController", function($scope, Listings) {
     Listings.sendAddress("main-search-input", function(results) {
       Listings.getListings(results).then(function(searchResult) {
         $scope.data = searchResult;
+        $scope.data.sort(function(a, b) {
+          return a.dist - b.dist;
+        });
         $scope.listPopulated = true;
         console.log(searchResult)
         $scope.search = "";
