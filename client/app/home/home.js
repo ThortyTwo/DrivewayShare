@@ -22,4 +22,5 @@ app.controller("HomeController", function($scope, Listings) {
   $scope.toggleExpand = function(item) {
     item.expand = !item.expand;
   };
+
 });

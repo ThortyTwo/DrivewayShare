@@ -23,7 +23,7 @@ db.knex.schema.hasTable("users").then(function(exists) {
       user.string("email", 50).unique();
       user.string("phone_number", 15);
       user.string("username", 30).unique();
-      user.string("password", 50);
+      user.string("password", 255);
       user.timestamps();
     }).then(function(table) {
       console.log('users table created', table);

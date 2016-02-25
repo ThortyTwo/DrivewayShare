@@ -11,5 +11,22 @@ app.controller("SignupController", function($scope, Auth, $location, $window){
 		.catch(function(error) {
 			console.error(error);
 		})
-	}
-})
+	};
+
+	$scope.signin = function () {
+	  Auth.signin($scope.user)
+	  .then(function (token) {
+	    if(token === undefined){
+	      alert("WRONG!!!!");
+	      $location.path("/home");
+	    } else {
+		  $window.localStorage.setItem("authentication", token);
+		  $location.path("/user");
+	    }
+	  })
+	  .catch(function (error) {
+	    console.error(error);
+	  });
+	};
+
+});

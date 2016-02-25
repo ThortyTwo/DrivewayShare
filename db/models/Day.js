@@ -9,6 +9,4 @@ var Day = bookshelf.Model.extend({
   }
 });
 
-module.exports = {
-  Day: Day
-};
+module.exports = Day;

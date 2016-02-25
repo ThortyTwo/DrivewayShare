@@ -1,5 +1,5 @@
 var bookshelf = require("../dbconfig.js").bookshelf;
-var User = require("./User.js").User
+var User = require("./User.js")
 
 var Listing = bookshelf.Model.extend({
 
@@ -14,6 +14,4 @@ var Listing = bookshelf.Model.extend({
   }
 });
 
-module.exports = {
-  Listing: Listing
-};
+module.exports = Listing;
