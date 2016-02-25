@@ -1,5 +1,5 @@
 var bookshelf = require("../dbconfig.js").bookshelf;
-var Listing = require("./Listing.js").Listing
+var Listing = require("./Listing.js")
 var bcrypt = require("bcrypt-nodejs");
 var Promise = require("bluebird");
 

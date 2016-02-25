@@ -23,7 +23,7 @@ app.post("/api/search", function (req, res) {
 	var targetLat = req.body.lat;
 	var targetLng = req.body.lng;
 	
-	new User.User().fetchAll({withRelated: ['listings']}).then(function(users) {
+	new User().fetchAll({withRelated: ['listings']}).then(function(users) {
 
 		var retVal = [];
 
@@ -71,7 +71,7 @@ app.post("/api/create", function (req, res) {
 
 	var data = req.body;
 
-	var newListing = new Listing.Listing({
+	var newListing = new Listing({
 		user_id: data.current_username,
 		street_address: data.street,
 		city_name: data.city,
