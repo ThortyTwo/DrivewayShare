@@ -1,4 +1,6 @@
-app.controller("UserController", function($scope, Listings){
+app.controller("UserController", function($scope, $window, Listings){
+
+  $scope.data = {};
 
   var resetNewListing = function() {
     $scope.newListing = {
@@ -15,11 +17,15 @@ app.controller("UserController", function($scope, Listings){
 
   resetNewListing();
 
+<<<<<<< 5e4721349e903f2f66e3ca9fbc36c61042085109
   $scope.autocomplete = new google.maps.places.Autocomplete(
     (document.getElementById("post-address-input")),
     {types: ["geocode"]});
 
   $scope.createListing = function(){
+=======
+  $scope.createListing = function() {
+>>>>>>> [Setup] Adopted list logic from homepage to user page
 
     // parse through formatted_address or google place object
     // to fill in individual fields in $scope.newListing
@@ -34,5 +40,11 @@ app.controller("UserController", function($scope, Listings){
     });
   };
 
+  var getCurrentListings = function() {
+    var jwt = $window.localStorage.getItem('authentication');
+    console.log(jwt);
+    //Listings.getUserListings()
+  }
 
+  getCurrentListings();
 });
