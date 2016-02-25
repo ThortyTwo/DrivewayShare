@@ -58,7 +58,7 @@ app.factory("Listings", function($http, $window){
     return $http({
       method: "POST",
       url: "/api/userListing",
-      data: {data: username}
+      data: {user: username}
     }).then(function(resp) {
       return resp.data;
     });
@@ -78,6 +78,7 @@ app.factory("Listings", function($http, $window){
   return {
     postListing: postListing,
     getListings: getListings,
+    getUserListings: getUserListings,
     sendAddress: sendAddress
   };
 })
