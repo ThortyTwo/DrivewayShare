@@ -1,4 +1,4 @@
-app.factory("Listings", function($http){
+app.factory("Listings", function($http, $window){
 
   var sendAddress = function(element_id, cb){
     var address = document.getElementById(element_id).value;
@@ -28,7 +28,7 @@ app.factory("Listings", function($http){
               lat: listingInfo.lat,
               lng: listingInfo.lng,
               price: listingInfo.price,
-              current_username: listingInfo.current_username
+              token: $window.localStorage.getItem("authentication")
             }
     })
     .then(function(resp) {

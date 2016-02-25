@@ -71,9 +71,10 @@ app.post("/api/search", function (req, res) {
 app.post("/api/create", function (req, res) {
 
 	var data = req.body;
+	var id = util.getCurrentUserID(req.body.token);
 
 	var newListing = new Listing({
-		user_id: data.current_username,
+		user_id: id,
 		street_address: data.street,
 		city_name: data.city,
 		state: data.state,
@@ -82,11 +83,6 @@ app.post("/api/create", function (req, res) {
 		longitude: data.lng,
 		price: data.price
 	});
-
-	console.log("create", newListing);
-
-
-
 
 	newListing.save().then(function(listing) {
 		res.status(201);

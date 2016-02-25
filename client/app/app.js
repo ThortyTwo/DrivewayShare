@@ -21,7 +21,7 @@ var app = angular.module("Driveway-Share", [
 			url: "/user",
 	    templateUrl: "app/user/user.html",
 	    controller: "UserController",
-			authenticate: false
+			authenticate: true
     })
     .state("about", {
     	url: "/about",
