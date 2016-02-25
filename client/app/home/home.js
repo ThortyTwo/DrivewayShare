@@ -1,6 +1,5 @@
-app.controller("HomeController", function($scope, Listings, Auth, $location, $window) {
+app.controller("HomeController", function($scope, Listings) {
 
-	$scope.user = {};
 	$scope.data = {};
 	$scope.search = "";
 
@@ -20,16 +19,5 @@ app.controller("HomeController", function($scope, Listings, Auth, $location, $wi
 
   $scope.toggleExpand = function(item) {
     item.expand = !item.expand;
-  };
-
-  $scope.signin = function() {
-    Auth.signin($scope.user)
-    .then(function (token) {
-      $window.localStorage.setItem("authentication", token);
-      $location.path("/user");
-    })
-    .catch(function(error) {
-      console.error(error);
-    });
   };
 });
