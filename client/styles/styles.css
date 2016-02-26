@@ -30,6 +30,7 @@
   text-decoration: none;
   color: white;
   padding: 0 25px;
+  cursor: pointer;
 }
 
 .nav-item:hover {
