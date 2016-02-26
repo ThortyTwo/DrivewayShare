@@ -33,7 +33,6 @@ app.controller("UserController", function($scope, $window, Listings){
   };
 
   $scope.createListing = function(){
-
     // send object to be posted
     Listings.sendAddress("post-address-input", function(results) {
       results.price = $scope.newListing.price;
@@ -43,6 +42,14 @@ app.controller("UserController", function($scope, $window, Listings){
       });
     });
   };
+
+  $scope.removeListing = function(item) {
+    var index = $scope.data.indexOf(item);
+    var id = $scope.data[index].id;
+
+    $scope.data.splice(index, 1);
+    Listings.deleteListing(id);
+  }
 
   var getCurrentListings = function() {
     Listings.getUserListings().then(function(searchResult) {

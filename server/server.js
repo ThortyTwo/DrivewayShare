@@ -95,6 +95,17 @@ app.post("/api/create", function(req, res) {
 
 });
 
+//route for deleting a previously created listing
+app.post("/api/delete", function(req, res) {
+
+	var listingId = req.body.listingId;
+
+	new Listing().where("id", listingId).destroy()
+	  .catch(function (err) {
+			throw err;
+		})
+});
+
 //route for retrieving current user's listings
 app.post("/api/userListing", function(req, res) {
 
