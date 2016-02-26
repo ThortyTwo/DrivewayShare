@@ -55,7 +55,7 @@ var app = angular.module("Driveway-Share", [
         if (toState.authenticate && !Auth.isAuth()){
           // User isn’t authenticated
           $state.transitionTo("home");
-          event.preventDefault(); 
+          event.preventDefault();
         }
     });
 });

@@ -1,4 +1,6 @@
-app.controller("UserController", function($scope, Listings){
+app.controller("UserController", function($scope, $window, Listings){
+
+  $scope.data = {};
 
   var resetNewListing = function() {
     $scope.newListing = {
@@ -19,7 +21,8 @@ app.controller("UserController", function($scope, Listings){
     (document.getElementById("post-address-input")),
     {types: ["geocode"]});
 
-  $scope.createListing = function(){
+  $scope.createListing = function() {
+
 
     // parse through formatted_address or google place object
     // to fill in individual fields in $scope.newListing
@@ -34,5 +37,11 @@ app.controller("UserController", function($scope, Listings){
     });
   };
 
+  var getCurrentListings = function() {
+    Listings.getUserListings().then(function(searchResult) {
+      $scope.data = searchResult;
+    })
+  }
 
+  getCurrentListings();
 });

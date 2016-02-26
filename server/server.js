@@ -22,7 +22,7 @@ app.post("/api/search", function (req, res) {
 
 	var targetLat = req.body.lat;
 	var targetLng = req.body.lng;
-	
+
 	new User().fetchAll({withRelated: ['listings']}).then(function(users) {
 
 		var retVal = [];
@@ -59,7 +59,7 @@ app.post("/api/search", function (req, res) {
 		res.status(200);
 		res.send(retVal);
 
-	}).catch(function (error) {
+	}).catch(function(error) {
 		console.log(error);
 		res.status(400);
 		res.send(error);
@@ -68,7 +68,7 @@ app.post("/api/search", function (req, res) {
 });
 
 // route for posting a listing
-app.post("/api/create", function (req, res) {
+app.post("/api/create", function(req, res) {
 
 	var data = req.body;
 	var id = util.getCurrentUserID(req.body.token);
@@ -95,8 +95,21 @@ app.post("/api/create", function (req, res) {
 
 });
 
+//route for retrieving current user's listings
+app.post("/api/userListing", function(req, res) {
+
+	var id = util.getCurrentUserID(req.body.token);
+
+	new Listing().where("user_id", id).fetchAll({withRelated: ["days"]})
+		.then(function(data) {
+		  res.status(200);
+			res.send(data);
+			})
+	});
+
+
 // route for everything else
-app.get("/*", function (req, res) {
+app.get("/*", function(req, res) {
   res.send("404 NOT FOUND");
 });
 
@@ -112,7 +125,7 @@ app.post("/api/users/signin", function (req, res, next) {
 	    .fetch()
 	    .then(function (user) {
 	    	if(!user) {
-	    		res.redirect("/home");	    		
+	    		res.redirect("/home");
 	    	} else {
 	    		user.comparePassword(password, function (match) {
 	    			if(match) {
@@ -150,7 +163,7 @@ app.post("/api/users/signup", function (req, res, next) {
 				newUser.save()
 					   .then(function (newUser) {
 					   	   var token = jwt.encode(user, 'secret');
-					   	   res.json({token: token});					   	
+					   	   res.json({token: token});
 					   });
 			} else {
 				return next(new Error("Username Already Exists"));
@@ -181,4 +194,3 @@ app.post("/user", function (req, res, next) {
 
 
 module.exports = app;
-

@@ -54,6 +54,16 @@ app.factory("Listings", function($http, $window){
     });
   };
 
+  var getUserListings = function() {
+    return $http({
+      method: "POST",
+      url: "/api/userListing",
+      data: {token: $window.localStorage.getItem("authentication")}
+    }).then(function(resp) {
+      return resp.data;
+    });
+  };
+
   var addressParser = function(address) {
     var arr = [];
     var commas = address.split(",");
@@ -68,6 +78,7 @@ app.factory("Listings", function($http, $window){
   return {
     postListing: postListing,
     getListings: getListings,
+    getUserListings: getUserListings,
     sendAddress: sendAddress
   };
 })
