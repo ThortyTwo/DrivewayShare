@@ -13,4 +13,12 @@ app.controller("NavController", function($scope, Auth, $location, $window) {
     });
   };
 
+  $scope.signout = function() {
+    Auth.signout();
+  };
+
+  $scope.isSignedIn = function() {
+    return Auth.isSignedIn();
+  };
+
 });

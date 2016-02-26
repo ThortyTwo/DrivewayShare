@@ -11,8 +11,11 @@
       <header>
         <a id="logo" href=#><span>Driveway Share</span></a>
         <nav id="nav-links">
+          <a class="nav-item" href="#/home">Search</a>
           <a class="nav-item" href="#/about">About</a>
-          <a class="nav-item" href="#/signup">Sign In</a>
+          <a class="nav-item" ng-show="isSignedIn()" href="#/user">Profile</a>
+          <a class="nav-item" ng-show="!isSignedIn()" href="#/signup">Sign In</a>
+          <a class="nav-item" ng-show="isSignedIn()" ng-click="signout()">Sign Out</a>
         </nav>
       </header>
     </div>
