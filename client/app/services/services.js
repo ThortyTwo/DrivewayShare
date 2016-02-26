@@ -31,8 +31,8 @@ app.factory("Listings", function($http, $window){
               token: $window.localStorage.getItem("authentication")
             }
     })
-    .then(function(resp) {
-      return resp.data;
+    .then(function(res) {
+      return res.data;
     });
   };
 
@@ -49,8 +49,8 @@ app.factory("Listings", function($http, $window){
               lng: searchInput.lng
             }
     })
-    .then(function(resp) {
-      return resp.data;
+    .then(function(res) {
+      return res.data;
     });
   };
 
@@ -59,8 +59,18 @@ app.factory("Listings", function($http, $window){
       method: "POST",
       url: "/api/userListing",
       data: {token: $window.localStorage.getItem("authentication")}
-    }).then(function(resp) {
-      return resp.data;
+    }).then(function(res) {
+      return res.data;
+    });
+  };
+
+  var deleteListing = function(listingId) {
+    return $http({
+      method: "POST",
+      url: "/api/delete",
+      data: {listingId: listingId}
+    }).then(function(res) {
+      return res.data;
     });
   };
 
@@ -79,6 +89,7 @@ app.factory("Listings", function($http, $window){
     postListing: postListing,
     getListings: getListings,
     getUserListings: getUserListings,
+    deleteListing: deleteListing,
     sendAddress: sendAddress
   };
 })
@@ -90,8 +101,8 @@ app.factory("Listings", function($http, $window){
       url: "api/users/signin",
       data: user
     })
-    .then(function(resp) {
-      return resp.data.token;
+    .then(function(res) {
+      return res.data.token;
     });
   };
 
@@ -101,8 +112,8 @@ app.factory("Listings", function($http, $window){
       url: "api/users/signup",
       data: user
     })
-    .then(function(resp) {
-      return resp.data.token;
+    .then(function(res) {
+      return res.data.token;
     });
   };
 

@@ -9,7 +9,6 @@ var Day = require("../db/models/Day.js");
 var _ = require("lodash");
 
 module.exports = {
-	days: ["M", "Tu", "W", "Th", "F", "Sa", "Su"],
 
 	getCurrentUserID: function(token) {
 		var currentUser = jwt.decode(token, "secret");
@@ -25,9 +24,7 @@ module.exports = {
 			var dayList = entry.days;
 			_.forEach(dayList, function(day) {
 				temp[day.day] = [day.day, day.start_time, day.end_time];
-				console.log("day entry inside formatUserData function", day.day, temp[day.day]);
 			})
-			console.log("temp", temp);
 			result.push(temp);
 		})
 		callback(result);

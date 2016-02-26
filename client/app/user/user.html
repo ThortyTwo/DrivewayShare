@@ -30,15 +30,10 @@
               {{ item.state }} {{ item.zipcode }}
             </p>
             <p class="list-price">${{ item.price }}</p>
-            <p class="list-availability">{{ item.avail_days }}</p>
+            <button ng-click="removeListing(item)">x</button>
           </div>
         </li>
       </ul>
     </section>
   </div>
-
-
-
-
-
 </div>
