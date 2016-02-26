@@ -2,6 +2,8 @@ app.controller("UserController", function($scope, $window, Listings){
 
   $scope.data = {};
 
+  $scope.tab = 1;
+
   var resetNewListing = function() {
     $scope.newListing = {
       formatted_address: "",
@@ -11,7 +13,7 @@ app.controller("UserController", function($scope, $window, Listings){
       start_time: "",
       end_time: "",
       avail_days: [],
-      price: 0
+      price: ""
     }
   };
 
@@ -20,6 +22,15 @@ app.controller("UserController", function($scope, $window, Listings){
   $scope.autocomplete = new google.maps.places.Autocomplete(
     (document.getElementById("post-address-input")),
     {types: ["geocode"]});
+
+
+  $scope.setTab = function(tab){
+    $scope.tab = tab;
+  };
+
+  $scope.isSet = function(tab){
+    return $scope.tab === tab;
+  };
 
   $scope.createListing = function(){
 

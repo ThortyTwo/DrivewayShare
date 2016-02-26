@@ -1,23 +1,27 @@
 <div id="user-container">
-  <h1>Create Listing</h1>
+  <div id="user-nav">
+    <header>
+      <nav>
+        <a class="user-nav-item" ng-class="{'active-tab': isSet(1)}" ng-click="setTab(1)">Create Listing</a>
+        <a class="user-nav-item" ng-class="{'active-tab': isSet(2)}" ng-click="setTab(2)">Manage Listings</a>
+      </nav>
+    </header>
+  </div>
 
-  <form name="createListingForm">
-    <label>Address:<input id="post-address-input" type="text" ng-model="newListing.formatted_address"></label><br/>
-    <label>Start Time:<input type="text" ng-model="newListing.start_time"></label><br/>
-    <label>End Time:<input type="text" ng-model="newListing.end_time"></label><br/>
-    <label>Availability:
-      <label><input type="checkbox" ng-model="newListing.avail_days[0]">Monday</label>
-      <label><input type="checkbox" ng-model="newListing.avail_days[1]">Tuesday</label>
-      <label><input type="checkbox" ng-model="newListing.avail_days[2]">Wednesday</label>
-      <label><input type="checkbox" ng-model="newListing.avail_days[3]">Thursday</label>
-      <label><input type="checkbox" ng-model="newListing.avail_days[4]">Friday</label>
-      <label><input type="checkbox" ng-model="newListing.avail_days[5]">Saturday</label>
-      <label><input type="checkbox" ng-model="newListing.avail_days[6]">Sunday</label>
-    </label><br/>
-    <label>Price:<input type="number" ng-model="newListing.price"></label><br/>
-  </form>
-  
-  <button ng-click="createListing()">Create Listing</button>
+  <div class="tab-content" ng-show="isSet(1)">
+    <h4 class="tab-content-header">Rent out your parking spot:</h4>
+    <form class="post-listing-form" name="createListingForm">
+      <label class="form-label">Address:<input id="post-address-input" type="text" ng-model="newListing.formatted_address" required></label>
+      <br/>
+      <label class="form-label">Price:<input id="post-price-input" placeholder="$" type="number" ng-model="newListing.price" required></label>
+      <br/>
+    </form>
+    <button id="post-listing-form-button" ng-click="createListing()">Submit</button>
+  </div>
+
+  <div class="tab-content" ng-show="isSet(2)">
+    <h4 class="tab-content-header">Manage Listings</h3>
+  </div>
 
   <section id="user-list" ng-show="data.length>0">
     <h1>Current Listings</h1>
