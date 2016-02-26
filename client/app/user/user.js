@@ -23,13 +23,9 @@ app.controller("UserController", function($scope, $window, Listings){
 
   $scope.createListing = function(){
 
-    // parse through formatted_address or google place object
-    // to fill in individual fields in $scope.newListing
-
     // send object to be posted
     Listings.sendAddress("post-address-input", function(results) {
       results.price = $scope.newListing.price;
-      results.current_username = 1; //CHANGE LATER
       Listings.postListing(results).then(function(respdata) {
         resetNewListing();
         getCurrentListings();
