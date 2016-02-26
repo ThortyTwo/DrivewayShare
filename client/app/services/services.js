@@ -54,13 +54,11 @@ app.factory("Listings", function($http, $window){
     });
   };
 
-  var getUserListings = function(username) {
+  var getUserListings = function() {
     return $http({
       method: "POST",
       url: "/api/userListing",
-      data: { user: username,
-              token: $window.localStorage.getItem("authentication")
-            }
+      data: {token: $window.localStorage.getItem("authentication")}
     }).then(function(resp) {
       return resp.data;
     });

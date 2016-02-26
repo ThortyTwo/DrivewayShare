@@ -98,7 +98,6 @@ app.post("/api/create", function(req, res) {
 //route for retrieving current user's listings
 app.post("/api/userListing", function(req, res) {
 
-	var data = req.body;
 	var id = util.getCurrentUserID(req.body.token);
 
 	new Listing().where("user_id", id).fetchAll({withRelated: ["days"]})

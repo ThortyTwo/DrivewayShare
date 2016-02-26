@@ -1,6 +1,5 @@
 app.controller("UserController", function($scope, $window, Listings){
 
-  var username = "kasra";
   $scope.data = {};
 
   var resetNewListing = function() {
@@ -39,11 +38,8 @@ app.controller("UserController", function($scope, $window, Listings){
   };
 
   var getCurrentListings = function() {
-    // var jwt = $window.localStorage.getItem("authentication");
-    // console.log(jwt);
-    Listings.getUserListings(username).then(function(searchResult) {
+    Listings.getUserListings().then(function(searchResult) {
       $scope.data = searchResult;
-      console.dir(searchResult);
     })
   }
 
