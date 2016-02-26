@@ -118,8 +118,8 @@ app.get("/*", function(req, res) {
 
 app.post("/api/users/signin", function (req, res, next) {
 
-	var username = req.body.username;
-	var password = req.body.password;
+	var username = req.body.loginUsername;
+	var password = req.body.loginPassword;
 
 	new User({ username: username })
 	    .fetch()
@@ -162,7 +162,7 @@ app.post("/api/users/signup", function (req, res, next) {
 				});
 				newUser.save()
 					   .then(function (newUser) {
-					   	   var token = jwt.encode(user, 'secret');
+					   	   var token = jwt.encode(newUser, 'secret');
 					   	   res.json({token: token});
 					   });
 			} else {
