@@ -21,21 +21,24 @@
 
   <div class="tab-content" ng-show="isSet(2)">
     <h4 class="tab-content-header">Manage Listings</h3>
+    <section id="user-list" ng-show="data.length>0">
+      <ul class="list-table">
+        <li class="list-item" ng-repeat="item in data">
+          <div>
+            <p class="list-address">
+              {{ item.street_address }}, {{ item.city_name }},
+              {{ item.state }} {{ item.zipcode }}
+            </p>
+            <p class="list-price">${{ item.price }}</p>
+            <p class="list-availability">{{ item.avail_days }}</p>
+          </div>
+        </li>
+      </ul>
+    </section>
   </div>
 
-  <section id="user-list" ng-show="data.length>0">
-    <h1>Current Listings</h1>
-    <ul class="list-table">
-      <li class="list-item" ng-repeat="item in data">
-        <div>
-          <p class="list-address">
-            {{ item.street_address }}, {{ item.city_name }},
-            {{ item.state }} {{ item.zipcode }}
-          </p>
-          <p class="list-price">${{ item.price }}</p>
-          <p class="list-availability">{{ item.avail_days }}</p>
-        </div>
-      </li>
-    </ul>
-  </section>
+
+
+
+
 </div>

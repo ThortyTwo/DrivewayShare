@@ -21,4 +21,8 @@ app.controller("NavController", function($scope, Auth, $location, $window) {
     return Auth.isSignedIn();
   };
 
+  $scope.reload = function(){
+    location.reload();
+  }
+
 });
