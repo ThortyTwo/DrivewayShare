@@ -16,7 +16,6 @@ app.controller("HomeController", function($scope, Listings) {
           return a.dist - b.dist;
         });
         $scope.listPopulated = true;
-        console.log(searchResult)
         $scope.search = "";
       });
     });
