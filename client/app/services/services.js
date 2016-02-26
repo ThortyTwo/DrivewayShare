@@ -58,7 +58,9 @@ app.factory("Listings", function($http, $window){
     return $http({
       method: "POST",
       url: "/api/userListing",
-      data: {user: username}
+      data: { user: username,
+              token: $window.localStorage.getItem("authentication")
+            }
     }).then(function(resp) {
       return resp.data;
     });

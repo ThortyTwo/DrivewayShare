@@ -98,14 +98,13 @@ app.post("/api/create", function(req, res) {
 //route for retrieving current user's listings
 app.post("/api/userListing", function(req, res) {
 
-	var user = req.body.user;
+	var data = req.body;
+	var id = util.getCurrentUserID(req.body.token);
 
-	util.findUserId(user, function(userid) {
-		new Listing.Listing().where("user_id", userid).fetchAll({withRelated: ["days"]})
-		  .then(function(data) {
-				res.status(200);
-				res.send(data);
-				})
+	new Listing().where("user_id", id).fetchAll({withRelated: ["days"]})
+		.then(function(data) {
+		  res.status(200);
+			res.send(data);
 			})
 	});
 
