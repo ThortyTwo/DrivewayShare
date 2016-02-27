@@ -5,6 +5,8 @@
     <button type="submit">Search</button>
   </form>
 
+  <div class="shadow"></div>
+
   <section id="main-list" ng-show="data.length>0">
     <h1>Listings</h1>
     <header class="list-headers">
@@ -13,8 +15,8 @@
       <h4 class="list-distance">Distance</h4>
     </header>
     <ul class="list-table">
-      <li class="list-item" ng-repeat="item in data" ng-click="toggleExpand(item)">
-        <div>
+      <li class="list-item" ng-repeat="item in data">
+        <div ng-click="toggleExpand(item)">
           <p class="list-address">
             {{ item.listing.street_address }}
             {{ item.listing.city_name }},
@@ -23,9 +25,12 @@
           </p>
           <p class="list-price">${{ item.listing.price }}</p>
           <p class="list-distance">{{ item.dist }} miles</p>
+          <p class="dropdown"><img src="../assets/dropdown.png"></p>
         </div>
         <div ng-show="item.expand">
-          <p class="list-contact">Contact {{ item.username }} at {{item.email}} or {{ item.phone }}</p>
+          <p class="list-contact">Owner: <strong>{{ item.username }}</strong></p><br>
+          <p class="list-contact">Email: <a href=# ng-click="sendEmail(item.email)">{{ item.email }}</a></p><br>
+          <p class="list-contact">Phone: {{ item.phone }}</p>
         </div>
       </li>
     </ul>

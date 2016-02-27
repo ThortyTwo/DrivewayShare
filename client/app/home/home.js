@@ -23,6 +23,11 @@ app.controller("HomeController", function($scope, Listings) {
     });
   };
 
+  $scope.sendEmail = function(email){
+    var mail = 'mailto:' + email;
+    window.location.href = mail;
+  };
+
   $scope.toggleExpand = function(item) {
     item.expand = !item.expand;
   };

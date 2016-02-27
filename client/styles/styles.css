@@ -37,6 +37,11 @@
   color: #FFF176;
 }
 
+.shadow {
+  background-image: url("../assets/bottom-shadow.png");
+  height: 15px;
+}
+
 #main {
   padding-top: 64px;
 }
@@ -79,12 +84,16 @@
   text-align: center;
 }
 
+.dropdown {
+  cursor: pointer;
+}
+
 .list-headers, .list-item {
   line-height: 32px;
   border-bottom: 1px solid #888;
 }
 
-.list-headers h4 {
+.list-headers h4, h5 {
   display: inline-block;
 }
 
@@ -101,22 +110,31 @@
 }
 
 .list-address {
-  width: 50%;
+  width: 60%;
   padding-left: 15px;
 }
 
-.list-price {
-  width: 22%;
+.list-price, .list-distance {
+  width: 17%;
   text-align: center;
 }
 
-.list-distance {
-  width: 22%;
+.user-list-price {
+  width: 11%;
   text-align: center;
+}
+
+.list-availability, .list-delete {
+  width: 11%;
+  text-align: center;
+}
+
+.list-delete img {
+  cursor: pointer;
 }
 
 .list-contact {
-  padding-left: 15px;
+  padding-left: 32px;
 }
 
 #user-nav {
@@ -132,8 +150,8 @@
 }
 
 .tab-content {
-  width: 50%;
-  margin: 24px auto;
+  width: 55%;
+  margin: 15px auto;
   background-color: #f8f8f8;
   padding: 15px;
 }
@@ -164,6 +182,10 @@
   width: 100px;
   height: 21px;
   margin-top: 15px;
+}
+
+#user-list-header {
+
 }
 
 #signup-container {
@@ -249,7 +271,7 @@
 }
 
 #post-address-input{
-  width: 400px;
+  width: 75%;
   height: 25px;
 }
 
