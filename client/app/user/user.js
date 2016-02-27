@@ -8,13 +8,8 @@ app.controller("UserController", function($scope, Nav, $window, Listings){
   var resetNewListing = function() {
     $scope.newListing = {
       formatted_address: "",
-      street_address: "",
-      city_name: "",
-      zip_code: "",
-      start_time: "",
-      end_time: "",
-      avail_days: [],
-      price: ""
+      price: "",
+      descrip: ""
     }
   };
 
@@ -38,6 +33,8 @@ app.controller("UserController", function($scope, Nav, $window, Listings){
     // send object to be posted
     Listings.sendAddress("post-address-input", function(results) {
       results.price = $scope.newListing.price;
+      results.descrip = $scope.newListing.descrip;
+
       Listings.postListing(results).then(function(respdata) {
         resetNewListing();
         getCurrentListings();

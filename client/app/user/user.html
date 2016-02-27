@@ -17,6 +17,9 @@
       <br/>
       <label class="form-label">Price:<input id="post-price-input" placeholder="$" type="number" ng-model="newListing.price" required></label>
       <br/>
+      {{250 - newListing.descrip.length}} Characters Available
+      <br/>
+      <label class="form-label">Description:<input id="post-description-input" type="text" ng-model="newListing.descrip" required></label>
     </form>
     <button id="post-listing-form-button" ng-click="createListing()">Submit</button>
   </div>

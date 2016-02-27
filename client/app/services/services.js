@@ -28,6 +28,7 @@ app.factory("Listings", function($http, $window){
               lat: listingInfo.lat,
               lng: listingInfo.lng,
               price: listingInfo.price,
+              description: listingInfo.descrip,
               token: $window.localStorage.getItem("authentication")
             }
     })
