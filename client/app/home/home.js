@@ -2,6 +2,7 @@ app.controller("HomeController", function($scope, Listings) {
 
 	$scope.data = [];
 	$scope.search = "";
+  $scope.distSearchInput = 500;
   $scope.listPopulated = false;
 
   $scope.autocomplete = new google.maps.places.Autocomplete(
@@ -9,8 +10,8 @@ app.controller("HomeController", function($scope, Listings) {
     {types: ["geocode"]});
 
   $scope.getSearch = function() {
-    Listings.sendAddress("main-search-input", function(results) {
-      Listings.getListings(results).then(function(searchResult) {
+    Listings.sendAddress($scope.search, function(results) {
+      Listings.getListings(results, $scope.distSearchInput).then(function(searchResult) {
 
         $scope.data = _.filter(searchResult, function(listing) {
 					return listing.listing.available !== 0;

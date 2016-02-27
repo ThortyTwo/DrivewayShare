@@ -1,7 +1,8 @@
 app.factory("Listings", function($http, $window){
 
-  var sendAddress = function(element_id, cb){
-    var address = document.getElementById(element_id).value;
+  var sendAddress = function(address, cb){
+    // var address = document.getElementById(element_id).value;
+    console.log(address)
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({address: address}, function(results, status) {
       if(status === google.maps.GeocoderStatus.OK) {
@@ -36,7 +37,7 @@ app.factory("Listings", function($http, $window){
     });
   };
 
-  var getListings = function(searchInput) {
+  var getListings = function(searchInput, maxDist) {
 
     return $http({
       method: "POST",
@@ -46,7 +47,8 @@ app.factory("Listings", function($http, $window){
               state: searchInput.address[2],
               zip: searchInput.address[3],
               lat: searchInput.lat,
-              lng: searchInput.lng
+              lng: searchInput.lng,
+              maxDist: maxDist
             }
     })
     .then(function(res) {

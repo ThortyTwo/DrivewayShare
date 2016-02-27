@@ -8,7 +8,7 @@
   <div class="shadow"></div>
 
   <section id="main-list" ng-show="data.length>0">
-    <h1>Listings</h1>
+    <h1>Listings within <input id="dist-input" type="number" ng-model="distSearchInput" required=""> miles</h1>
     <header class="list-headers">
       <h4 class="list-address">Address</h4>
       <h4 class="list-price" ng-click="sortPrice()">Price</h4>

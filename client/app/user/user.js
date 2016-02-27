@@ -32,8 +32,10 @@ app.controller("UserController", function($scope, $window, Listings){
     return $scope.tab === tab;
   };
 
+
   $scope.createListing = function() {
-    Listings.sendAddress("post-address-input", function(results) {
+    // send object to be posted
+    Listings.sendAddress($scope.newListing.formatted_address, function(results) {
       results.price = $scope.newListing.price;
       Listings.postListing(results).then(function(respdata) {
         resetNewListing();
