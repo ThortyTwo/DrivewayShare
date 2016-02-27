@@ -50,10 +50,10 @@ app.controller("HomeController", function($scope, Listings) {
     });
   };
 
-  $scope.$watch("distSearchInput", function(){
+  $scope.$watch("distSearchInput", _.throttle(function(){
     if($scope.listPopulated) {
       $scope.getSearch(prevSearch);
     }
-  });
+  }, 800, {"leading": true, "trailing": true}));
 
 });
