@@ -43,7 +43,7 @@ app.post("/api/search", function (req, res) {
 				var distkm = Math.sqrt(Math.pow(latkm,2)+Math.pow(lngkm,2));
 				var distmi = distkm * .621371;
 
-				if(distmi < 2) {
+				if(distmi < req.body.maxDist) {
 					retVal.push({
 						listing: currentListing,
 						username: user.get("username"),
