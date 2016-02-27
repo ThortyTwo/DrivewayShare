@@ -74,6 +74,18 @@ app.factory("Listings", function($http, $window){
     });
   };
 
+  var toggleListingAvailability = function(listingId, avail) {
+    return $http({
+      method: "POST",
+      url: "/api/toggle",
+      data: { listingId: listingId,
+              avail: avail
+            }
+    }).then(function(res) {
+      return res.data;
+    });
+  };
+
   var addressParser = function(address) {
     var arr = [];
     var commas = address.split(",");
@@ -90,6 +102,7 @@ app.factory("Listings", function($http, $window){
     getListings: getListings,
     getUserListings: getUserListings,
     deleteListing: deleteListing,
+    toggleListingAvailability: toggleListingAvailability,
     sendAddress: sendAddress
   };
 })

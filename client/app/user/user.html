@@ -30,6 +30,9 @@
               {{ item.state }} {{ item.zipcode }}
             </p>
             <p class="list-price">${{ item.price }}</p>
+            <button ng-click="item.available = !item.available; toggleListingAvailability(item)">
+              {{item.available ? "Hide" : "Unhide"}}
+            </button>
             <button ng-click="removeListing(item)">x</button>
           </div>
         </li>

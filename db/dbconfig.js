@@ -43,6 +43,8 @@ db.knex.schema.hasTable("listings").then(function(exists) {
       listing.float("latitude", 10, 6);
       listing.float("longitude", 10, 6);
       listing.integer("price");
+      listing.boolean("available").defaultTo(true);
+      listing.string("description", 255);
       listing.timestamps();
       listing.foreign("user_id").references("id").inTable("users");
     }).then(function(table) {
@@ -51,6 +53,7 @@ db.knex.schema.hasTable("listings").then(function(exists) {
   }
 });
 
+//Unutilitzed 'Days' table to potentially allow for searching by day/time availability
 db.knex.schema.hasTable("listing_days").then(function(exists) {
   if (!exists) {
     knex.schema.createTable("listing_days", function(listing_day) {
