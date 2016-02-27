@@ -8,6 +8,8 @@
     </header>
   </div>
 
+  <div class="shadow"></div>
+
   <div class="tab-content" ng-show="isSet(1)">
     <h4 class="tab-content-header">Rent out your parking spot:</h4>
     <form class="post-listing-form" name="createListingForm">
@@ -22,6 +24,12 @@
   <div class="tab-content" ng-show="isSet(2)">
     <h4 class="tab-content-header">Manage Listings</h3>
     <section id="user-list" ng-show="data.length>0">
+      <header id="user-list-headers">
+        <h5 class="list-address">Address</h5>
+        <h5 class="user-list-price">Price</h5>
+        <h5 class="list-availability">Availability</h5>
+        <h5 class="list-delete">Delete</h5>
+      </header>
       <ul class="list-table">
         <li class="list-item" ng-repeat="item in data">
           <div>
@@ -29,11 +37,13 @@
               {{ item.street_address }}, {{ item.city_name }},
               {{ item.state }} {{ item.zipcode }}
             </p>
-            <p class="list-price">${{ item.price }}</p>
-            <button ng-click="item.available = !item.available; toggleListingAvailability(item)">
-              {{item.available ? "Hide" : "Unhide"}}
-            </button>
-            <button ng-click="removeListing(item)">x</button>
+            <p class="user-list-price">${{ item.price }}</p>
+            <p class="list-availability">
+              <button ng-click="item.available = !item.available; toggleListingAvailability(item)">
+                {{item.available ? "Hide" : "Unhide"}}
+              </button>
+            </p>
+            <p class="list-delete"><img src="../assets/trash-can.png" ng-click="removeListing(item)"></p>
           </div>
         </li>
       </ul>
