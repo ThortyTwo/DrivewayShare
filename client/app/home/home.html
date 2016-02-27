@@ -1,5 +1,5 @@
 <div id="home-container">
-
+  
   <form id="main-search" ng-submit="getSearch()" ng-class="listPopulated ? 'smallSearch' : 'largeSearch'">
     <input id="main-search-input" type="text" ng-model="search" required="">
     <button type="submit">Search</button>
@@ -14,7 +14,8 @@
       <h4 class="list-price" ng-click="sortPrice()">Price</h4>
       <h4 class="list-distance" ng-click="sortDist()">Distance</h4>
     </header>
-    <ul class="list-table">
+
+    <ol class="list-table">
       <li class="list-item" ng-repeat="item in data">
         <div>
           <p class="list-address">
@@ -35,7 +36,7 @@
           <p class="list-contact">Phone: {{ item.phone }}</p>
         </div>
       </li>
-    </ul>
+    </ol>
   </section>
 
 </div>
