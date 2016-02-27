@@ -24,7 +24,7 @@ app.post("/api/search", function (req, res) {
 	var targetLng = req.body.lng;
 
 	new User().fetchAll({withRelated: ['listings']}).then(function(users) {
-	
+
 		var retVal = [];
 
 		for(var i=0; i<users.models.length; i++) {
@@ -56,13 +56,11 @@ app.post("/api/search", function (req, res) {
 			}
 		}
 
-		res.status(200);
-		res.send(retVal);
+		res.status(200).send(retVal);
 
 	}).catch(function(error) {
 		console.log(error);
-		res.status(400);
-		res.send(error);
+		res.status(400).send(error);
 	});
 
 });
@@ -85,12 +83,10 @@ app.post("/api/create", function(req, res) {
 	});
 
 	newListing.save().then(function(listing) {
-		res.status(201);
-		res.send("successfully created");
+		res.status(201).send("successfully created");
 	}).catch(function (error) {
 		console.log(error);
-		res.status(400);
-		res.send(error);
+		res.status(400).send(error);
 	});
 
 });
@@ -101,8 +97,8 @@ app.post("/api/delete", function(req, res) {
 	var listingId = req.body.listingId;
 
 	new Listing().where("id", listingId).destroy()
-	  .catch(function (err) {
-			throw err;
+	  .catch(function (error) {
+			res.status(400).send(error);
 		})
 });
 
@@ -113,10 +109,23 @@ app.post("/api/userListing", function(req, res) {
 
 	new Listing().where("user_id", id).fetchAll({withRelated: ["days"]})
 		.then(function(data) {
-		  res.status(200);
-			res.send(data);
-			})
+		  res.status(200).send(data);
+		})
+		.catch(function(error) {
+			res.status(400).send(error);
+		})
 	});
+
+app.post("/api/toggle", function(req, res) {
+	new Listing().where("id", req.body.listingId)
+	  .save({available: req.body.avail}, {patch: true})
+		.then(function(data) {
+			res.status(200).send(data);
+		})
+		.catch(function (error) {
+			res.status(400).send(error);
+		})
+})
 
 
 // route for everything else

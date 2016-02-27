@@ -11,7 +11,9 @@ app.controller("HomeController", function($scope, Listings) {
   $scope.getSearch = function() {
     Listings.sendAddress("main-search-input", function(results) {
       Listings.getListings(results).then(function(searchResult) {
-        $scope.data = searchResult;
+        $scope.data = _.filter(searchResult, function(listing) {
+					return listing.listing.available !== 0;
+				});
         $scope.data.sort(function(a, b) {
           return a.dist - b.dist;
         });
