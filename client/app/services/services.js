@@ -1,8 +1,6 @@
 app.factory("Listings", function($http, $window){
 
   var sendAddress = function(address, cb){
-    // var address = document.getElementById(element_id).value;
-    console.log(address)
     var geocoder = new google.maps.Geocoder();
     geocoder.geocode({address: address}, function(results, status) {
       if(status === google.maps.GeocoderStatus.OK) {

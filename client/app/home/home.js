@@ -2,15 +2,17 @@ app.controller("HomeController", function($scope, Listings) {
 
 	$scope.data = [];
 	$scope.search = "";
-  $scope.distSearchInput = 500;
+  var prevSearch = $scope.search;
+  $scope.distSearchInput = 2;
   $scope.listPopulated = false;
 
   $scope.autocomplete = new google.maps.places.Autocomplete(
     (document.getElementById("main-search-input")),
     {types: ["geocode"]});
 
-  $scope.getSearch = function() {
-    Listings.sendAddress($scope.search, function(results) {
+  $scope.getSearch = function(search) {
+    prevSearch = search;
+    Listings.sendAddress(search, function(results) {
       Listings.getListings(results, $scope.distSearchInput).then(function(searchResult) {
 
         $scope.data = _.filter(searchResult, function(listing) {
@@ -47,5 +49,11 @@ app.controller("HomeController", function($scope, Listings) {
       return itemA.listing.price - itemB.listing.price;
     });
   };
+
+  $scope.$watch("distSearchInput", function(){
+    if($scope.listPopulated) {
+      $scope.getSearch(prevSearch);
+    }
+  });
 
 });

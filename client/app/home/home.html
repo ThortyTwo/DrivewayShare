@@ -1,13 +1,13 @@
 <div id="home-container">
 
-  <form id="main-search" ng-submit="getSearch()" ng-class="listPopulated ? 'smallSearch' : 'largeSearch'">
+  <form id="main-search" ng-submit="getSearch(search)" ng-class="listPopulated ? 'smallSearch' : 'largeSearch'">
     <input id="main-search-input" type="text" ng-model="search" required="">
     <button type="submit">Search</button>
   </form>
 
   <div class="shadow"></div>
 
-  <section id="main-list" ng-show="data.length>0">
+  <section id="main-list" ng-show="listPopulated">
     <h1>Listings within <input id="dist-input" type="number" ng-model="distSearchInput" required=""> miles</h1>
     <header class="list-headers">
       <h4 class="list-address">Address</h4>
