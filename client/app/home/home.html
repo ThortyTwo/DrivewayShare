@@ -28,6 +28,8 @@
           <p class="dropdown"><img ng-click="toggleExpand(item)" src="../assets/dropdown.png"></p>
         </div>
         <div ng-show="item.expand">
+          <p>{{item.listing.description}}</p>
+          <br/>
           <p class="list-contact">Owner: <strong>{{ item.username }}</strong></p><br>
           <p class="list-contact">Email: <a href=# ng-click="sendEmail(item.email)">{{ item.email }}</a></p><br>
           <p class="list-contact">Phone: {{ item.phone }}</p>
