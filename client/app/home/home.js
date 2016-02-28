@@ -10,21 +10,24 @@ app.controller("HomeController", function($scope, Listings) {
     (document.getElementById("main-search-input")),
     {types: ["geocode"]});
 
+  var handleSearchResults = function(searchResult) {
+    $scope.data = _.filter(searchResult, function(listing) {
+      return listing.listing.available !== 0;
+    });
+
+    $scope.data.sort(function(itemA, itemB) {
+      return itemA.dist - itemB.dist;
+    });
+    
+    $scope.listPopulated = true;
+    $scope.search = "";
+  }
+
   $scope.getSearch = function() {
-    // prevSearch = search;
     Listings.sendAddress("main-search-input", function(results) {
+      prevSearch = results;
       Listings.getListings(results, $scope.distSearchInput).then(function(searchResult) {
-
-        $scope.data = _.filter(searchResult, function(listing) {
-					return listing.listing.available !== 0;
-				});
-
-        $scope.data.sort(function(itemA, itemB) {
-          return itemA.dist - itemB.dist;
-        });
-        
-        $scope.listPopulated = true;
-        $scope.search = "";
+        handleSearchResults(searchResult);
       });
     });
   };
@@ -50,10 +53,12 @@ app.controller("HomeController", function($scope, Listings) {
     });
   };
 
-  // $scope.$watch("distSearchInput", _.throttle(function(){
-  //   if($scope.listPopulated) {
-  //     $scope.getSearch(prevSearch);
-  //   }
-  // }, 800, {"leading": true, "trailing": true}));
+  $scope.$watch("distSearchInput", _.throttle(function(){
+    if($scope.listPopulated) {
+      Listings.getListings(prevSearch, $scope.distSearchInput).then(function(searchResult) {
+        handleSearchResults(searchResult);
+      });
+    }
+  }, 800, {"leading": true, "trailing": true}));
 
 });
