@@ -26,6 +26,7 @@ var app = angular.module("Driveway-Share", [
     .state("about", {
     	url: "/about",
     	templateUrl: "app/home/about.html",
+      controller: "AboutController",
     	authenticate: false
     });
 

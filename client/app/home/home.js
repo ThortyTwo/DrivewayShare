@@ -1,10 +1,12 @@
-app.controller("HomeController", function($scope, Listings) {
+app.controller("HomeController", function($scope, Nav, Listings) {
 
 	$scope.data = [];
 	$scope.search = "";
   var prevSearch = $scope.search;
   $scope.distSearchInput = 2;
   $scope.listPopulated = false;
+
+  Nav.setPage(1);
 
   $scope.autocomplete = new google.maps.places.Autocomplete(
     (document.getElementById("main-search-input")),

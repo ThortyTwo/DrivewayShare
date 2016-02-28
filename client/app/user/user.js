@@ -1,8 +1,9 @@
-app.controller("UserController", function($scope, $window, Listings){
+app.controller("UserController", function($scope, Nav, $window, Listings){
 
   $scope.data = {};
-
   $scope.tab = 1;
+
+  Nav.setPage(3);
 
   var resetNewListing = function() {
     $scope.newListing = {

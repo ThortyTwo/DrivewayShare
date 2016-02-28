@@ -151,4 +151,21 @@ app.factory("Listings", function($http, $window){
     isSignedIn: isSignedIn,
     signout: signout
   };
+})
+.service("Nav", function(){
+  var page = 1;
+
+  var getPage = function(){
+    return page;
+  };
+
+  var setPage = function(val){
+    page = val;
+  };
+
+  return {
+    getPage: getPage,
+    setPage: setPage
+  };
+
 });
