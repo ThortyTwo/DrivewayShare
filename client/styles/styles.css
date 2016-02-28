@@ -292,8 +292,8 @@
   font-size: 17px;
 }
 
-#about-product {
-
+#about-product p{
+  white-space: pre-wrap;
 }
 
 #about-us {
