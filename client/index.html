@@ -2,19 +2,20 @@
 <html ng-app="Driveway-Share">
   <head>
     <meta charset="utf-8"/>
-    <title>Driveway Share</title>
+    <title>DrivewayShare</title>
     <link rel="stylesheet" type="text/css" href="styles/styles.css"/>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:700italic' rel='stylesheet' type='text/css'>
   </head>
   <body>
 
     <div id="nav-bar" ng-controller="NavController">
       <header>
-        <a id="logo" href=#><span>Driveway Share</span></a>
+        <a id="logo" href=# ng-click="setPage(1)"><span>DrivewayShare</span></a>
         <nav id="nav-links">
-          <a class="nav-item" href="#/home">Search</a>
-          <a class="nav-item" href="#/about">About</a>
-          <a class="nav-item" ng-show="isSignedIn()" href="#/user">Profile</a>
-          <a class="nav-item" ng-show="!isSignedIn()" href="#/signup">Sign In</a>
+          <a class="nav-item" href="#/home" ng-class="{'active-page': isSet(1)}" ng-click="setPage(1)">Search</a>
+          <a class="nav-item" href="#/about" ng-class="{'active-page': isSet(2)}" ng-click="setPage(2)">About</a>
+          <a class="nav-item" ng-show="isSignedIn()" href="#/user" ng-class="{'active-page': isSet(3)}" ng-click="setPage(3)">Profile</a>
+          <a class="nav-item" ng-show="!isSignedIn()" href="#/signup" ng-class="{'active-page': isSet(4)}" ng-click="setPage(4)">Sign In</a>
           <a class="nav-item" ng-show="isSignedIn()" ng-click="signout()">Sign Out</a>
         </nav>
       </header>
@@ -29,6 +30,7 @@
     <script src="app/app.js"></script>
     <script src="app/home/home.js"></script>
     <script src="app/home/nav.js"></script>
+    <script src="app/home/about.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
     <script src="app/user/user.js"></script>
     <script src="app/signup/signup.js"></script>

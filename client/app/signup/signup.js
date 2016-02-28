@@ -1,12 +1,15 @@
-app.controller("SignupController", function($scope, Auth, $location, $window){
+app.controller("SignupController", function($scope, Auth, Nav, $location, $window){
 
 	$scope.user = {};
+
+  Nav.setPage(4);
 
 	$scope.signup = function() {
 		Auth.signup($scope.user)
 		.then(function (token){
 			$window.localStorage.setItem("authentication", token);
 			$location.path("/user");
+      Nav.setPage(3);
 		})
 		.catch(function(error) {
 			console.error(error);
@@ -21,6 +24,7 @@ app.controller("SignupController", function($scope, Auth, $location, $window){
 	    } else {
 		  	$window.localStorage.setItem("authentication", token);
 		  	$location.path("/user");
+        Nav.setPage(3);
 	    }
 	  })
 	  .catch(function (error) {

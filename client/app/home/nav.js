@@ -1,4 +1,4 @@
-app.controller("NavController", function($scope, Auth, $location, $window) {
+app.controller("NavController", function($scope, Auth, Nav, $location, $window) {
 
   $scope.user = {};
 
@@ -13,7 +13,16 @@ app.controller("NavController", function($scope, Auth, $location, $window) {
     });
   };
 
+  $scope.setPage = function(val){
+    Nav.setPage(val);
+  }
+
+  $scope.isSet = function(page) {
+    return Nav.getPage() === page;
+  };
+
   $scope.signout = function() {
+    Nav.setPage(1);
     Auth.signout();
   };
 

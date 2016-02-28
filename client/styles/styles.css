@@ -13,11 +13,15 @@
 }
 
 #logo {
-  color: white;
+  color: #FF6E40;
   text-decoration: none;
-  font-size: 150%;
+  font-size: 160%;
   display: inline-block;
   margin-left: 15%;
+}
+
+#logo span {
+  font-family: 'Roboto', sans-serif;
 }
 
 #nav-links {
@@ -29,12 +33,13 @@
 .nav-item {
   text-decoration: none;
   color: white;
+  font-size: 88%;
   padding: 0 25px;
   cursor: pointer;
 }
 
-.nav-item:hover {
-  color: #FFF176;
+.nav-item:hover, .active-page {
+  color: #EEFF41;
 }
 
 .shadow {
@@ -144,9 +149,11 @@
 }
 
 .user-nav-item {
+  display: inline-block;
   cursor: pointer;
   padding: 0 25px;
   color: #888;
+  font-size: 88%;
 }
 
 .tab-content {
