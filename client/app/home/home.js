@@ -20,7 +20,7 @@ app.controller("HomeController", function($scope, Nav, Listings) {
     $scope.data.sort(function(itemA, itemB) {
       return itemA.dist - itemB.dist;
     });
-    
+
     $scope.listPopulated = true;
     $scope.search = "";
   }
