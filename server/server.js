@@ -68,9 +68,11 @@ app.post("/api/search", function (req, res) {
 // route for posting a listing
 app.post("/api/create", function(req, res) {
 
-	var data = req.body;
+  var data = req.body;
+	console.log(data);
 	var id = util.getCurrentUserID(req.body.token);
 
+	console.log(data.description);
 	var newListing = new Listing({
 		user_id: id,
 		street_address: data.street,
@@ -79,7 +81,8 @@ app.post("/api/create", function(req, res) {
 		zipcode: data.zip,
 		latitude: data.lat,
 		longitude: data.lng,
-		price: data.price
+		price: data.price,
+		description: data.description
 	});
 
 	newListing.save().then(function(listing) {
