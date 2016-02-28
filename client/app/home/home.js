@@ -10,9 +10,9 @@ app.controller("HomeController", function($scope, Listings) {
     (document.getElementById("main-search-input")),
     {types: ["geocode"]});
 
-  $scope.getSearch = function(search) {
-    prevSearch = search;
-    Listings.sendAddress(search, function(results) {
+  $scope.getSearch = function() {
+    // prevSearch = search;
+    Listings.sendAddress("main-search-input", function(results) {
       Listings.getListings(results, $scope.distSearchInput).then(function(searchResult) {
 
         $scope.data = _.filter(searchResult, function(listing) {
@@ -50,10 +50,10 @@ app.controller("HomeController", function($scope, Listings) {
     });
   };
 
-  $scope.$watch("distSearchInput", _.throttle(function(){
-    if($scope.listPopulated) {
-      $scope.getSearch(prevSearch);
-    }
-  }, 800, {"leading": true, "trailing": true}));
+  // $scope.$watch("distSearchInput", _.throttle(function(){
+  //   if($scope.listPopulated) {
+  //     $scope.getSearch(prevSearch);
+  //   }
+  // }, 800, {"leading": true, "trailing": true}));
 
 });
