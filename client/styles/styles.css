@@ -155,6 +155,19 @@
 
 .list-contact {
   padding-left: 32px;
+  font-size: 95%;
+}
+
+.list-contact span {
+  color: #555;
+  font-size: 85%;
+  font-style: italic;
+  padding-right: 5px;
+}
+
+#list-contact-description {
+  overflow: hidden;
+  width: 95%;
 }
 
 #user-nav {
@@ -191,6 +204,13 @@
 .form-label {
   color: #333;
   line-height: 50px;
+}
+
+#post-address-input, #post-description-input {
+  width: 75%;
+  height: 25px;
+  margin: 0 10px;
+  padding: 0 5px;
 }
 
 #post-price-input {
@@ -281,22 +301,6 @@
   color: white;
 }
 
-.no-bullet {
-  list-style-type: none;
-}
-
-#post-address-input{
-  width: 50%;
-  height: 25px;
-  margin-left: 10px;
-  padding: 0 5px;
-}
-
-#post-address-input{
-  width: 75%;
-  height: 25px;
-}
-
 #about {
   padding: 20px;
 }
@@ -309,4 +313,13 @@
 
 #about-product p {
   white-space: pre-wrap;
+}
+
+.no-bullet {
+  list-style-type: none;
+}
+
+.chars-left {
+  color: #a1a1a1;
+  font-size: 65%;
 }

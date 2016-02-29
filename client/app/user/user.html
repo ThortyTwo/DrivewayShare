@@ -15,11 +15,10 @@
     <form class="post-listing-form" name="createListingForm">
       <label class="form-label">Address:<input id="post-address-input" type="text" ng-model="newListing.formatted_address" required></label>
       <br/>
+      <label class="form-label">Description:<input id="post-description-input" placeholder="e.g. days/times available, driveway/garage spot, covered/uncovered, etc." maxlength="250" type="text" ng-model="newListing.descrip" required></label>
+      <span class="chars-left">chars: {{250 - newListing.descrip.length}}</span>
+      <br/>
       <label class="form-label">Price:<input id="post-price-input" placeholder="$" type="number" ng-model="newListing.price" required></label>
-      <br/>
-      {{250 - newListing.descrip.length}} Characters Available
-      <br/>
-      <label class="form-label">Description:<input id="post-description-input" type="text" ng-model="newListing.descrip" required></label>
     </form>
     <button id="post-listing-form-button" ng-click="createListing()">Submit</button>
   </div>
@@ -48,7 +47,7 @@
             </p>
             <p class="list-delete"><img src="../assets/trash-can.png" ng-click="removeListing(item)"></p>
             <br/>
-            {{item.description}}
+            <!-- {{item.description}} -->
           </div>
         </li>
       </ul>

@@ -32,11 +32,10 @@
           <p class="dropdown"><img ng-click="toggleExpand(item)" src="../assets/dropdown.png"></p>
         </div>
         <div ng-show="item.expand">
-          <p>{{item.listing.description}}</p>
-          <br/>
-          <p class="list-contact">Owner: <strong>{{ item.username }}</strong></p><br>
-          <p class="list-contact">Email: <a href=# ng-click="sendEmail(item.email)">{{ item.email }}</a></p><br>
-          <p class="list-contact">Phone: {{ item.phone }}</p>
+          <p class="list-contact"><span>Owner: </span> <strong>{{ item.username }}</strong></p><br>
+          <p class="list-contact"><span>Email: </span> <a href=# ng-click="sendEmail(item.email)">{{ item.email }}</a></p><br>
+          <p class="list-contact"><span>Phone: </span> {{ item.phone }}</p><br/>
+          <p id="list-contact-description" class="list-contact"><span>Description:</span> {{ item.listing.description }}</p><br/>
         </div>
       </li>
     </ol>
