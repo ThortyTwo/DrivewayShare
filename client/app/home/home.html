@@ -35,7 +35,7 @@
           <p class="list-contact"><span>Owner: </span> <strong>{{ item.username }}</strong></p>
           <p class="list-contact"><span>Email: </span> <a href=# ng-click="sendEmail(item.email)">{{ item.email }}</a></p>
           <p class="list-contact"><span>Phone: </span> {{ item.phone }}</p>
-          <p class="list-contact-description" ng-show="item.listing.description">"{{ item.listing.description }}"</p>
+          <p class="list-contact-description" ng-show="item.listing.description">{{ item.listing.description }}</p>
         </div>
       </li>
     </ol>

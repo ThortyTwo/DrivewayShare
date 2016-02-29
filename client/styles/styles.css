@@ -79,8 +79,8 @@
 }
 
 .largeSearch {
-  line-height: 420px;
-  background: #009688;
+  line-height: 600px;
+  background-image: url("../assets/bg.jpg");
 }
 
 .smallSearch {
@@ -173,6 +173,7 @@
 
 .list-user-description {
   width: 90%;
+  white-space: pre-wrap;
 }
 
 #user-nav {
@@ -212,11 +213,24 @@
   line-height: 50px;
 }
 
-#post-address-input, #post-description-input {
+#post-address-input {
   width: 75%;
   height: 25px;
-  margin: 0 10px;
+  margin: 0 10px 15px 10px;
   padding: 0 5px;
+}
+
+#post-description * {
+  vertical-align: middle;
+}
+
+#post-description-input {
+  width: 50%;
+  height: 50px;
+  resize: none;
+  margin: 0 10px;
+  padding: 5px;
+  border-color: #ddd;
 }
 
 #post-price-input {
