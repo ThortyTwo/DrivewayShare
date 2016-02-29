@@ -41,8 +41,7 @@
             </p>
             <p class="user-list-price">${{ item.price }}</p>
             <p class="list-availability">
-              <button ng-click="item.available = !item.available; toggleListingAvailability(item)">
-                {{item.available ? "Hide" : "Unhide"}}
+              <button ng-class="{'red-circle': !item.available, 'green-circle': item.available}" ng-click="item.available = !item.available; toggleListingAvailability(item)">
               </button>
             </p>
             <p class="list-delete"><img src="../assets/trash-can.png" ng-click="removeListing(item)"></p>

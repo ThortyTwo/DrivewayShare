@@ -154,7 +154,7 @@
 }
 
 .list-contact {
-  padding-left: 32px;
+  padding-left: 24px;
   font-size: 95%;
 }
 
@@ -168,6 +168,7 @@
 #list-contact-description {
   overflow: hidden;
   width: 95%;
+  padding-left: 32px;
 }
 
 #user-nav {
@@ -186,6 +187,7 @@
 
 .tab-content {
   width: 55%;
+  min-width: 600px;
   margin: 15px auto;
   background-color: #f8f8f8;
   padding: 15px;
@@ -322,4 +324,20 @@
 .chars-left {
   color: #a1a1a1;
   font-size: 65%;
+}
+
+.green-circle, .red-circle {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.green-circle {
+  background-color: #00BFA5;
+}
+
+.red-circle {
+  background-color: #DD2C00;
 }
