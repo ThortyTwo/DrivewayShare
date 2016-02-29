@@ -11,11 +11,10 @@
   height: 64px;
   line-height: 64px;
   z-index: 1;
-  white-space: nowrap;
 }
 
 #nav-bar header {
-  min-width: 600px;
+  min-width: 650px;
 }
 
 #logo {
@@ -35,7 +34,7 @@
   display: inline-block;
   float: right;
   padding-right: 50px;
-  width: 350px;
+  width: 400px;
 }
 
 .nav-item {
