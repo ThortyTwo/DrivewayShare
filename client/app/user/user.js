@@ -28,6 +28,10 @@ app.controller("UserController", function($scope, Nav, $window, Listings){
     return $scope.tab === tab;
   };
 
+  $scope.toggleExpand = function(item) {
+    item.expand = !item.expand;
+  };
+
 
   $scope.createListing = function() {
     // send object to be posted

@@ -11,7 +11,7 @@ app.factory("Listings", function($http, $window){
         retVal.lng = results[0].geometry.location.lng();
         cb(retVal);
       } else {
-        alert("please enter valid address yo");
+        alert("Please enter a valid address...");
       }
     });
   };

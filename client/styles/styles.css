@@ -10,27 +10,36 @@
   width: 100%;
   height: 64px;
   line-height: 64px;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+#nav-bar header {
+  min-width: 600px;
 }
 
 #logo {
-  color: #FF6E40;
-  text-decoration: none;
-  font-size: 160%;
   display: inline-block;
-  margin-left: 15%;
+  padding-left: 50px;
+  text-decoration: none;
+  width: 150px;
 }
 
 #logo span {
-  font-family: 'Roboto', sans-serif;
+  color: white;
+  font-size: 160%;
+  font-family: 'Oswald', sans-serif;
 }
 
 #nav-links {
   display: inline-block;
   float: right;
-  margin-right: 15%;
+  padding-right: 50px;
+  width: 350px;
 }
 
 .nav-item {
+  display: inline-block;
   text-decoration: none;
   color: white;
   font-size: 88%;
@@ -79,10 +88,18 @@
   background: #009688;
 }
 
+#google-map {
+  width: 100%;
+  min-width: 400px;
+  height: 400px;
+  margin: 15px 0;
+}
+
 #main-list {
   width: 75%;
   margin: 0 auto;
   padding-top: 15px;
+  padding-bottom: 50px;
 }
 
 #main-list h1 {
@@ -90,20 +107,18 @@
 }
 
 .dropdown {
+  width: 1%;
   cursor: pointer;
 }
 
 .list-headers, .list-item {
   line-height: 32px;
   border-bottom: 1px solid #888;
+  min-width: 575px;
 }
 
 .list-headers h4, h5 {
   display: inline-block;
-}
-
-.list-table {
-  
 }
 
 .list-item:hover {
@@ -139,7 +154,25 @@
 }
 
 .list-contact {
+  padding-left: 24px;
+  font-size: 95%;
+}
+
+.list-contact span {
+  color: #555;
+  font-size: 85%;
+  font-style: italic;
+  padding-right: 5px;
+}
+
+.list-contact-description, .list-user-description {
+  overflow: hidden;
+  width: 95%;
   padding-left: 32px;
+}
+
+.list-user-description {
+  width: 90%;
 }
 
 #user-nav {
@@ -158,6 +191,7 @@
 
 .tab-content {
   width: 55%;
+  min-width: 600px;
   margin: 15px auto;
   background-color: #f8f8f8;
   padding: 15px;
@@ -178,6 +212,13 @@
   line-height: 50px;
 }
 
+#post-address-input, #post-description-input {
+  width: 75%;
+  height: 25px;
+  margin: 0 10px;
+  padding: 0 5px;
+}
+
 #post-price-input {
   width: 48px;
   margin-left: 10px;
@@ -189,10 +230,6 @@
   width: 100px;
   height: 21px;
   margin-top: 15px;
-}
-
-#user-list-header {
-
 }
 
 #signup-container {
@@ -270,18 +307,6 @@
   color: white;
 }
 
-#post-address-input{
-  width: 50%;
-  height: 25px;
-  margin-left: 10px;
-  padding: 0 5px;
-}
-
-#post-address-input{
-  width: 75%;
-  height: 25px;
-}
-
 #about {
   padding: 20px;
 }
@@ -292,10 +317,31 @@
   font-size: 17px;
 }
 
-#about-product p{
+#about-product p {
   white-space: pre-wrap;
 }
 
-#about-us {
+.no-bullet {
+  list-style-type: none;
+}
 
+.chars-left {
+  color: #a1a1a1;
+  font-size: 65%;
+}
+
+.green-circle, .red-circle {
+  height: 15px;
+  width: 15px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+
+.green-circle {
+  background-color: #00BFA5;
+}
+
+.red-circle {
+  background-color: #DD2C00;
 }

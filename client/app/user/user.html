@@ -15,11 +15,10 @@
     <form class="post-listing-form" name="createListingForm">
       <label class="form-label">Address:<input id="post-address-input" type="text" ng-model="newListing.formatted_address" required></label>
       <br/>
+      <label class="form-label">Description:<input id="post-description-input" placeholder="e.g. days/times available, driveway/garage spot, covered/uncovered, etc." maxlength="250" type="text" ng-model="newListing.descrip" required></label>
+      <span class="chars-left">chars: {{250 - newListing.descrip.length}}</span>
+      <br/>
       <label class="form-label">Price:<input id="post-price-input" placeholder="$" type="number" ng-model="newListing.price" required></label>
-      <br/>
-      {{250 - newListing.descrip.length}} Characters Available
-      <br/>
-      <label class="form-label">Description:<input id="post-description-input" type="text" ng-model="newListing.descrip" required></label>
     </form>
     <button id="post-listing-form-button" ng-click="createListing()">Submit</button>
   </div>
@@ -34,7 +33,7 @@
         <h5 class="list-delete">Delete</h5>
       </header>
       <ul class="list-table">
-        <li class="list-item" ng-repeat="item in data">
+        <li class="list-item no-bullet" ng-repeat="item in data">
           <div>
             <p class="list-address">
               {{ item.street_address }}, {{ item.city_name }},
@@ -42,13 +41,14 @@
             </p>
             <p class="user-list-price">${{ item.price }}</p>
             <p class="list-availability">
-              <button ng-click="item.available = !item.available; toggleListingAvailability(item)">
-                {{item.available ? "Hide" : "Unhide"}}
+              <button ng-class="{'red-circle': !item.available, 'green-circle': item.available}" ng-click="item.available = !item.available; toggleListingAvailability(item)">
               </button>
             </p>
             <p class="list-delete"><img src="../assets/trash-can.png" ng-click="removeListing(item)"></p>
-            <br/>
-            {{item.description}}
+            <p class="dropdown" ng-show="item.description"><img ng-click="toggleExpand(item)" src="../assets/dropdown.png"></p>
+              <div ng-show="item.expand">
+                <p class="list-user-description">"{{ item.description }}"</p>
+              </div>
           </div>
         </li>
       </ul>

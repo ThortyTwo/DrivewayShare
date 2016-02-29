@@ -1,5 +1,5 @@
 <div id="home-container">
-  
+
   <form id="main-search" ng-submit="getSearch()" ng-class="listPopulated ? 'smallSearch' : 'largeSearch'">
     <input id="main-search-input" type="text" ng-model="search" required="">
     <button type="submit">Search</button>
@@ -8,9 +8,9 @@
   <div class="shadow"></div>
 
   <section id="main-list" ng-show="listPopulated">
-    <h1>Listings within <input id="dist-input" type="number" ng-model="distSearchInput" required=""> miles</h1>
+    <h1>Listings within <input id="dist-input" type="number" ng-model="distSearchInput" min="1" required> miles</h1>
 
-    <div id="google-map" style="width:100%; height:400px;"></div>
+    <div id="google-map"></div>
 
     <header class="list-headers">
       <h4 class="list-address">Address</h4>
@@ -32,11 +32,10 @@
           <p class="dropdown"><img ng-click="toggleExpand(item)" src="../assets/dropdown.png"></p>
         </div>
         <div ng-show="item.expand">
-          <p>{{item.listing.description}}</p>
-          <br/>
-          <p class="list-contact">Owner: <strong>{{ item.username }}</strong></p><br>
-          <p class="list-contact">Email: <a href=# ng-click="sendEmail(item.email)">{{ item.email }}</a></p><br>
-          <p class="list-contact">Phone: {{ item.phone }}</p>
+          <p class="list-contact"><span>Owner: </span> <strong>{{ item.username }}</strong></p>
+          <p class="list-contact"><span>Email: </span> <a href=# ng-click="sendEmail(item.email)">{{ item.email }}</a></p>
+          <p class="list-contact"><span>Phone: </span> {{ item.phone }}</p>
+          <p class="list-contact-description" ng-show="item.listing.description">"{{ item.listing.description }}"</p>
         </div>
       </li>
     </ol>
