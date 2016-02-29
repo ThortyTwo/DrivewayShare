@@ -70,4 +70,5 @@ app.controller("UserController", function($scope, Nav, $window, Listings){
   }
 
   getCurrentListings();
+  console.log($scope.data);
 });
