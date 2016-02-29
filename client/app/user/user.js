@@ -1,6 +1,7 @@
 app.controller("UserController", function($scope, Nav, $window, Listings){
 
   $scope.data = {};
+  $scope.editedData = [];
   $scope.tab = 1;
 
   Nav.setPage(3);
@@ -46,6 +47,10 @@ app.controller("UserController", function($scope, Nav, $window, Listings){
     });
   };
 
+  $scope.editListing = function(item) {
+    console.log("sending to be edited", item);
+  }
+
   $scope.removeListing = function(item) {
     var index = $scope.data.indexOf(item);
     var id = $scope.data[index].id;
@@ -66,9 +71,9 @@ app.controller("UserController", function($scope, Nav, $window, Listings){
   var getCurrentListings = function() {
     Listings.getUserListings().then(function(searchResult) {
       $scope.data = searchResult;
+      console.log($scope.data);
     })
   }
 
   getCurrentListings();
-  console.log($scope.data);
 });
