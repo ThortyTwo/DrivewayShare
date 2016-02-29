@@ -168,11 +168,11 @@
   overflow: hidden;
   width: 95%;
   padding-left: 32px;
+  white-space: pre-wrap;
 }
 
 .list-user-description {
   width: 90%;
-  white-space: pre-wrap;
 }
 
 #user-nav {
