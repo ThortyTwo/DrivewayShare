@@ -50,18 +50,21 @@ app.controller("HomeController", function($scope, Nav, Listings) {
     $scope.data.sort(function(itemA, itemB) {
       return itemA.dist - itemB.dist;
     });
+    $scope.displayMap();
   };
 
   $scope.sortPrice = function() {
     $scope.data.sort(function(itemA, itemB) {
       return itemA.listing.price - itemB.listing.price;
     });
+    $scope.displayMap();
   };
 
   $scope.$watch("distSearchInput", _.throttle(function(){
     if($scope.listPopulated) {
       Listings.getListings(prevSearch, $scope.distSearchInput).then(function(searchResult) {
         handleSearchResults(searchResult);
+        $scope.displayMap();
       });
     }
   }, 800, {"leading": true, "trailing": true}));
@@ -81,7 +84,7 @@ app.controller("HomeController", function($scope, Nav, Listings) {
       infoWindowContent.push("$" + $scope.data[i].listing.price);
     }
 
-    function initializeMap() { 
+    function initializeMap() {
       var mapProp = {
         center: {lat: $scope.mainSearch.lat, lng: $scope.mainSearch.lng},
         zoom: 13,
@@ -96,14 +99,17 @@ app.controller("HomeController", function($scope, Nav, Listings) {
       })
 
       var infoWindow = new google.maps.InfoWindow(); 
+      var bounds = new google.maps.LatLngBounds(); 
 
       for(var j = 0; j < markers.length; j++) {
         var position = new google.maps.LatLng(markers[j][1], markers[j][2]);
+        bounds.extend(position);
         var marker = new google.maps.Marker({
           position: position,
           map: map,
           label: markers[j][0]
         });
+
         google.maps.event.addListener(marker, "click", (function(marker, j) {
           return function() {
             infoWindow.setContent(infoWindowContent[j]);
@@ -111,6 +117,8 @@ app.controller("HomeController", function($scope, Nav, Listings) {
           }
         })(marker, j));
       }
+
+      map.fitBounds(bounds);
     }
 
     initializeMap();
