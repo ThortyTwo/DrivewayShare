@@ -45,8 +45,10 @@
               </button>
             </p>
             <p class="list-delete"><img src="../assets/trash-can.png" ng-click="removeListing(item)"></p>
-            <br/>
-            <!-- {{item.description}} -->
+            <p class="dropdown" ng-show="item.description"><img ng-click="toggleExpand(item)" src="../assets/dropdown.png"></p>
+              <div ng-show="item.expand">
+                <p class="list-user-description">"{{ item.description }}"</p>
+              </div>
           </div>
         </li>
       </ul>

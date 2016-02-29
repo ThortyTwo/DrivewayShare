@@ -165,10 +165,14 @@
   padding-right: 5px;
 }
 
-#list-contact-description {
+.list-contact-description, .list-user-description {
   overflow: hidden;
   width: 95%;
   padding-left: 32px;
+}
+
+.list-user-description {
+  width: 90%;
 }
 
 #user-nav {

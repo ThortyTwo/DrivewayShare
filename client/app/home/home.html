@@ -8,7 +8,7 @@
   <div class="shadow"></div>
 
   <section id="main-list" ng-show="listPopulated">
-    <h1>Listings within <input id="dist-input" type="number" ng-model="distSearchInput" required=""> miles</h1>
+    <h1>Listings within <input id="dist-input" type="number" ng-model="distSearchInput" min="1" required> miles</h1>
 
     <div id="google-map"></div>
 
@@ -35,7 +35,7 @@
           <p class="list-contact"><span>Owner: </span> <strong>{{ item.username }}</strong></p>
           <p class="list-contact"><span>Email: </span> <a href=# ng-click="sendEmail(item.email)">{{ item.email }}</a></p>
           <p class="list-contact"><span>Phone: </span> {{ item.phone }}</p>
-          <p id="list-contact-description" ng-show="item.listing.description">"{{ item.listing.description }}"</p>
+          <p class="list-contact-description" ng-show="item.listing.description">"{{ item.listing.description }}"</p>
         </div>
       </li>
     </ol>
