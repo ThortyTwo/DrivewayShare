@@ -54,7 +54,7 @@ var app = angular.module("Driveway-Share", [
 
     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams){
         if (toState.authenticate && !Auth.isAuth()){
-          // User isn’t authenticated
+          // User isn’t authenticated, provides alternate route
           $state.transitionTo("home");
           event.preventDefault();
         }

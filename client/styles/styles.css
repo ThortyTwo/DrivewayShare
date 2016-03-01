@@ -257,6 +257,10 @@
   padding: 50px 32px;
 }
 
+textarea {
+  resize: none;
+}
+
 .md-title, .md-input::-webkit-input-placeholder, .md-button {
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;

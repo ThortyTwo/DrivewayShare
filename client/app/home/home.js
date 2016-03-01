@@ -7,13 +7,14 @@ app.controller("HomeController", function($scope, Nav, Listings) {
   $scope.listPopulated = false;
   $scope.mainSearch;
 
+  // Controls highlighting of Navigation bar, maintains highlighting on window refresh
   Nav.setPage(1);
 
   $scope.autocomplete = new google.maps.places.Autocomplete(
     (document.getElementById("main-search-input")),
     {types: ["geocode"]});
 
-  var handleSearchResults = function(searchResult) {
+  var hideUnavailableListings = function(searchResult) {
     $scope.data = _.filter(searchResult, function(listing) {
       return listing.listing.available !== 0;
     });
@@ -34,7 +35,7 @@ app.controller("HomeController", function($scope, Nav, Listings) {
       prevSearch = results;
       $scope.mainSearch = {lat: results.lat, lng: results.lng};
       Listings.getListings(results, $scope.distSearchInput).then(function(searchResult) {
-        handleSearchResults(searchResult);
+        hideUnavailableListings(searchResult);
       });
     });
   };
@@ -62,14 +63,14 @@ app.controller("HomeController", function($scope, Nav, Listings) {
     $scope.displayMap();
   };
 
+	// Listener for changes in search radius, updates results
   $scope.$watch("distSearchInput", _.throttle(function(){
     if($scope.listPopulated) {
       Listings.getListings(prevSearch, $scope.distSearchInput).then(function(searchResult) {
-        handleSearchResults(searchResult);
+        hideUnavailableListings(searchResult);
       });
     }
   }, 800, {"leading": true, "trailing": true}));
-
 
   $scope.displayMap = function () {
 
@@ -101,7 +102,7 @@ app.controller("HomeController", function($scope, Nav, Listings) {
 
       var infoWindow = new google.maps.InfoWindow();
       var centerMarker = new google.maps.LatLng($scope.mainSearch.lat, $scope.mainSearch.lng);
-      var bounds = new google.maps.LatLngBounds(centerMarker); 
+      var bounds = new google.maps.LatLngBounds(centerMarker);
 
       for(var j = 0; j < markers.length; j++) {
         var position = new google.maps.LatLng(markers[j][1], markers[j][2]);

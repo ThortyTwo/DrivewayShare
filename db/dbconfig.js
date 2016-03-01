@@ -53,7 +53,7 @@ db.knex.schema.hasTable("listings").then(function(exists) {
   }
 });
 
-//Unutilitzed 'Days' table to potentially allow for searching by day/time availability
+// Unutilitzed 'Days' table to potentially allow for searching by day/time availability
 db.knex.schema.hasTable("listing_days").then(function(exists) {
   if (!exists) {
     knex.schema.createTable("listing_days", function(listing_day) {
