@@ -98,8 +98,9 @@ app.controller("HomeController", function($scope, Nav, Listings) {
         icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
       })
 
-      var infoWindow = new google.maps.InfoWindow(); 
-      var bounds = new google.maps.LatLngBounds(); 
+      var infoWindow = new google.maps.InfoWindow();
+      var centerMarker = new google.maps.LatLng($scope.mainSearch.lat, $scope.mainSearch.lng);
+      var bounds = new google.maps.LatLngBounds(centerMarker); 
 
       for(var j = 0; j < markers.length; j++) {
         var position = new google.maps.LatLng(markers[j][1], markers[j][2]);
