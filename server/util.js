@@ -13,20 +13,5 @@ module.exports = {
 	getCurrentUserID: function(token) {
 		var currentUser = jwt.decode(token, "secret");
 		return currentUser.id;
-	},
-
-	formatUserData: function(userData, callback) {
-		var result = [];
-		var temp = {};
-
-		_.forEach(userData, function(entry) {
-			temp = entry;
-			var dayList = entry.days;
-			_.forEach(dayList, function(day) {
-				temp[day.day] = [day.day, day.start_time, day.end_time];
-			})
-			result.push(temp);
-		})
-		callback(result);
 	}
 }

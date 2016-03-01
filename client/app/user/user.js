@@ -20,7 +20,7 @@ app.controller("UserController", function($scope, Nav, $window, Listings){
     (document.getElementById("post-address-input")),
     {types: ["geocode"]});
 
-
+  // Manages createListing view vs manageListing view
   $scope.setTab = function(tab) {
     $scope.tab = tab;
   };
@@ -35,7 +35,6 @@ app.controller("UserController", function($scope, Nav, $window, Listings){
 
 
   $scope.createListing = function() {
-    // send object to be posted
     Listings.sendAddress("post-address-input", function(results) {
       results.price = $scope.newListing.price;
       results.descrip = $scope.newListing.descrip;
@@ -46,10 +45,6 @@ app.controller("UserController", function($scope, Nav, $window, Listings){
       });
     });
   };
-
-  $scope.editListing = function(item) {
-    console.log("sending to be edited", item);
-  }
 
   $scope.removeListing = function(item) {
     var index = $scope.data.indexOf(item);
@@ -62,7 +57,8 @@ app.controller("UserController", function($scope, Nav, $window, Listings){
   $scope.toggleListingAvailability = function(item) {
     var index = $scope.data.indexOf(item);
     var id = $scope.data[index].id;
-    //Convert true/false value back to 1/0 for storage in db
+    // Database stores availability as 1 (true) or 0 (false)
+    // Converts before sending back to server
     var avail = $scope.data[index].available ? 1 : 0;
 
     Listings.toggleListingAvailability(id, avail);
@@ -71,7 +67,6 @@ app.controller("UserController", function($scope, Nav, $window, Listings){
   var getCurrentListings = function() {
     Listings.getUserListings().then(function(searchResult) {
       $scope.data = searchResult;
-      console.log($scope.data);
     })
   }
 

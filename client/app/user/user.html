@@ -14,7 +14,6 @@
     <h4 class="tab-content-header">Rent out your parking spot:</h4>
     <form class="post-listing-form" name="createListingForm">
       <label class="form-label">Address:<input id="post-address-input" type="text" ng-model="newListing.formatted_address" required></label>
-      <br/>
       <div id="post-description">
         <label class="form-label">Description:<textarea id="post-description-input" placeholder="e.g. days/times available, driveway/garage spot, covered/uncovered, etc." maxlength="250" type="text" ng-model="newListing.descrip" ng-trim="false" required></textarea></label>
         <span class="chars-left">chars: {{250 - newListing.descrip.length}}</span>
