@@ -24,6 +24,9 @@ app.controller("HomeController", function($scope, Nav, Listings) {
 
     $scope.listPopulated = true;
     $scope.search = "";
+    window.setTimeout(function() {
+      $scope.displayMap();
+    }, 10);
   }
 
   $scope.getSearch = function() {
@@ -32,7 +35,6 @@ app.controller("HomeController", function($scope, Nav, Listings) {
       $scope.mainSearch = {lat: results.lat, lng: results.lng};
       Listings.getListings(results, $scope.distSearchInput).then(function(searchResult) {
         handleSearchResults(searchResult);
-        $scope.displayMap();
       });
     });
   };
@@ -64,7 +66,6 @@ app.controller("HomeController", function($scope, Nav, Listings) {
     if($scope.listPopulated) {
       Listings.getListings(prevSearch, $scope.distSearchInput).then(function(searchResult) {
         handleSearchResults(searchResult);
-        $scope.displayMap();
       });
     }
   }, 800, {"leading": true, "trailing": true}));
